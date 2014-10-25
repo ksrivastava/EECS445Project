@@ -13,8 +13,8 @@ def select(row):
 	return False
 
 def checkSucc(row):
-	# if (row['w4_q5'] == '1') or (row['w4_q1'] == '1'):
-	# 	return 1
+	if (row['w4_q5'] == '1') or (row['w4_q1'] == '1'):
+		return 1
 
 	if ((row['w4_q9']) == '1') or (row['w4_q3'] == '2') or (row['w4_q3'] == '1') or (row['W3_Q3'] == '2') or (row['W3_Q3'] == '1') or (row['W3_Q9'] == '1') or (row['W3_Q9'] == '3') or (row['W2_Q3'] == '1') or (row['W2_Q3'] == '2') or (row['W2_Q9'] == '1') or (row['W2_Q9'] == '3'):
 		return -1
@@ -33,8 +33,9 @@ def main():
 	dict_writer.writer.writerow(header)
 	for row in data_reader:
 		if checkSucc(row):
-			row['success'] = checkSucc(row)
-	   		dict_writer.writer.writerow(row.values())
+			record = row.values()
+			record.append(checkSucc(row))
+	   		dict_writer.writer.writerow(record)
 	data_file.close()
 	output_file.close()
 
