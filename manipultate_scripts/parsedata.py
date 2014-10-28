@@ -22,20 +22,19 @@ def checkSucc(row):
 
 def main():
 	data_file = open('../data/30103-0001-Data.tsv', 'rU')
-	header = next(data_file).split('\t')
-	output_file = open('../data/classify_suc_or_not.csv','wb')
-
+	header = next(data_file).strip().split('\t')
+	output_file = open('../data/classify_suc_or_not.tsv','wb')
 	data_reader = readData(data_file, header)
-
 	
-	header[-1] = "success"
-	dict_writer = csv.DictWriter(output_file,header)
-	dict_writer.writer.writerow(header)
+	data = []
 	for row in data_reader:
 		if checkSucc(row):
-			record = row.values()
-			record.append(checkSucc(row))
-	   		dict_writer.writer.writerow(record)
+			row['success'] = checkSucc(row)
+			data.append(row)
+	fieldnames = sorted(list(set(k for d in data for k in d)))
+	dict_writer = csv.DictWriter(output_file,fieldnames=fieldnames, delimiter='\t')
+	dict_writer.writeheader()
+	dict_writer.writerows(data)
 	data_file.close()
 	output_file.close()
 
