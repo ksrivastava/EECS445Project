@@ -3,6 +3,8 @@ from sklearn import svm
 from sklearn import preprocessing
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import chi2
 
 data = np.genfromtxt('../data/filtered_data.txt', skip_header=True, delimiter='\t')
 m = data.shape[1];
@@ -17,23 +19,24 @@ yTrain = targets[:n/2]
 xTest = features[n/2:, :]
 yTest = targets[n/2:]
 
-# xTrain_scaled = preprocessing.scale(xTrain)
-xTrain_scaled = xTrain
+sel = SelectKBest(chi2, k=7)
+xTrain = sel.fit_transform(abs(xTrain), yTrain)
+xTest = sel.transform(xTest)
 
 gnb = GaussianNB()
-y_pred = gnb.fit(xTrain_scaled, yTrain)
+y_pred = gnb.fit(xTrain, yTrain)
 nb_accuracy = gnb.score(xTest, yTest)
 
 print "Naive Bayes: " + str(nb_accuracy * 100)
 
 clf = svm.SVC()
-w = clf.fit(xTrain_scaled, yTrain)
+w = clf.fit(xTrain, yTrain)
 cl_accuracy = clf.score(xTest, yTest)
 
 print "Classification: " + str(cl_accuracy * 100)
 
 knn = KNeighborsClassifier(n_neighbors=10)
-knn.fit(xTrain_scaled, yTrain)
+knn.fit(xTrain, yTrain)
 nn_accuracy = knn.score(xTest, yTest)
 
 print "NearestNeighbors: " + str(nn_accuracy * 100)
