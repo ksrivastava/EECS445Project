@@ -1,0 +1,1 @@
+success	p1_age	p1_gender	p1_employment	p1_education	p1_race	p1_politics	p1_religion	p1_income	p1_orientation	p2_age	p2_gender	p2_employment	p2_education	p2_race	p2_politics	p2_religion	p2_income	p2_orientation	quality	parental_approval	parents_know_eachother
