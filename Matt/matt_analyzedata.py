@@ -20,7 +20,7 @@ complete = imp.fit_transform(data)
 
 
 targets = complete[:, 0]
-features = complete[:, 1:]
+#features = complete[:, 1:]
 
 # print 'targets'
 # print targets
@@ -34,16 +34,16 @@ test_set_percentage = 1 - training_set_percentage;
 
 #convert categorical features into multiple binary sets
 enc = OneHotEncoder()
-transformed = enc.fit_transform(features)
+features = enc.fit_transform(complete[:, 1:]).toarray()
 
-m = transformed.shape[1]
-n = transformed.shape[0]
+m = features.shape[1]
+n = features.shape[0]
 
 print 'dimensions ' + str(m) + ' by ' + str(n) 
 
-np.savetxt('missingfilledin.txt', complete, delimiter='\t')
+#np.savetxt('missingfilledin.txt', complete, delimiter='\t')
 
-
+#features = transformed.toarray()
 
 training_set_size = int(training_set_percentage * n)
 testing_set_size = n - training_set_size
@@ -59,7 +59,7 @@ yTrain *= -1
 yTest *= -1
 
 # Feature selection: Univariate
-sel = SelectKBest(chi2, k=10)
+sel = SelectKBest(chi2, k=15)
 xTrain = sel.fit_transform(abs(xTrain), yTrain)
 xTest = sel.transform(xTest)
 
