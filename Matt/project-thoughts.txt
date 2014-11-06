@@ -1,0 +1,173 @@
+first remove -1 answers for refused / replace with blank
+fill in all blanks with median
+
+generate categorical binaries
+
+
+
+for this portion continuous, will evaluate mixing continuous and binaries categories in future 
+
+
+
+eecs 445 project work progress report due 11/7 @ 1155p
+	dianostics and error analysis, control experiments and justify algorithmic claims - sanity check
+
+////////////////////////
+concern - calculate how many years they have been together
+then fill empty
+remove same sex
+some features have 1,2 values, others have 0,1
+only considering initial baseline answers - not updated demographic information like education
+discard people whose partner dies
+make unemployent category
+maybe build unemployed at any poit
+in school - change in education
+increase in number of children total 
+DIFFERENCE IN AGE BETWEEN PARTNER;
+consider same race/different race?
+
+
+//////////////////
+comments on data
+
+RESPONDENT_YRSED - based on ppeduc and first demographic background survey - continuous
+
+s2 relation type - sexual, romantic, single
+
+q7b partnre religion - can combine with PARTNER_RELIGION_RECLASSIFIED:
+
+q8 partner religion at 16 limited answers
+can combine with PARTNER_RELIGION_CHILD_RECLASS
+
+q9 partner age
+q10 partner education
+PARTNER_YRSED based on q10
+
+q11 partner mother education
+PARTNER_MOM_YRSED:
+
+q12 partner political party
+q13a - religion same as 16?
+q13b - religion at 166
+
+q14 - mothers schooling
+RESPONDENT_MOM_YRSED
+
+q15a1 - gorwing up country (2 cat)
+US RAISED  - many missing
+
+q16 relative involvement (continuous)
+
+17c/d sexual attractioni - many blanks (5 cats)
+
+17a/b number of previous marriages (continuous - many blanks should be replaced with 1 for zero) 
+
+21b - age relationship began
+21c - age cohabitancy began
+21d - age of marriage - many missing - eliminate
+
+
+22 - length of romantic relationship (86% no reponse from married)
+
+23 - who earned more in 08 (3 cat)
+24 remove
+	q24 - variety of meeting contributers classified by researchers
+
+	MET_THROUGH_FRIENDS
+	MET_THROUGH_FAMILY
+	MET_THROUGH_AS_NEIGHBORS
+	MET_THROUGH_AS_COWORKERS
+
+25 - same high school attendance
+26 - same college (many have no response 61%)
+
+major challenge - lack of data - need to pick values for no answer
+
+27 - grow up in same city 2 cat
+
+28 - did parents know 2cat
+29 - parents allive (4 cat)
+30 - parents feeling on partner (4 cat)
+PARENTAL_APPPROVAL based on q30
+
+q31 - presplit meeting place work, school, church,internet, trip, bar, volunteer, party, other
+
+32 internet meeting  w/ categories ->use q24_met_online
+Q32_INTERNET
+
+33 - who introducted _1 family, _2 friend, _3 coworker, _4 classmate, _5 neighbor, _6 self
+
+34 quality (5 cat - continueous) - median
+RELATIONSHIP_QUALITY:
+
+DISTANCEMOVED_10MI
+
+MARRYNOTREALLY discard
+MARRYCOUNTRY discard
+CIVILNOTREALLY discard
+PARTNER_DECEASED: discard
+
+SAME_SEX_COUPLE
+
+HOW_LONG_AGO_FIRST_MET - based on ppage and q21a 
+
+	HOW_LONG_AGO_FIRST_MET_CAT based on above (7 categories)
+
+HOW_LONG_AGO_FIRST_ROMANTIC
+HOW_LONG_AGO_FIRST_COHAB - many missing
+
+RESPONDENT_RACE - 6 cat
+
+PARTNER_RACE - 6 cat
+
+AGE_DIFFERENCE: absolute value of ppage-q9 
+
+
+RESPONDENT_RELIG_16_CAT com of papreligion and q13b - 5 cat
+
+PARTNER_RELIG_16_CAT com of 17b 18b
+
+MARRIED based on s1
+
+CORESIDENT based on q19
+
+PP2_PPHHSIZE - household size 1-12
+PP2_PPHHHEAD - head of household
+PP2_PPHOUSE - housing type 5 cat
+PP2_PPINCIMP - household income 19 cat
+
+PP2_PPMARIT - marital status 5 cat
+PP2_PPMSACAT - metropolitan area
+
+PP2_PPEDUCAT - 4 cat education / PP2_RESPONDENT_YRSED, 
+PP2_PPEDUC related
+
+PP2_PPETHM race 5 cat racce
+PP2_PPREG4 4 cat region / PP2_PPREG9 9 cat region
+
+PP2_PPRENT - 3 cat ownership of house
+
+PP2_PPT01  children less than 2 in household - continuous
+PP2_PPT25 - children 2-5
+PP2_PPT612 - children 6-12
+PP2_PPT1317 - children 13-17
+PP2_PPT18OV - adults in household
+
+PP2_PPWORK - employment status - 7 cat
+PP2_PPNET internet status binary
+
+
+
+
+
+
+
+
+
+various zip code info
+ZPMEDHHINC_CAT - meidan hh income
+ZPFORBORN_CAT -foreign born
+ZPNHWHITE_CAT/HIST/BLACK - percent of race in zipcode
+ZPRURAL_CAT rural
+
+W4_ATTRACTIVE - 4 cat for attractiveness
