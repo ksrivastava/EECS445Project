@@ -1,33 +1,45 @@
+procedure:
 first remove -1 answers for refused / replace with blank
+discard people whose partner dies
+remove same sex
 fill in all blanks with median
-
 generate categorical binaries
+randomize data inside of tsv; make sure we have balanced set
 
+Section 1. Introduction: Problem description and motivation. Why do you want to solve this problem? What's the impact if you can solve this problem?
+Section 2. Proposed method: How are you going to solve this problem? Why should the proposed method work? Provide technical details of your approach if you are proposing a novel method.
+Section 3. Related work: What are existing methods? What are the state-of-the-art methods for this problem? How is your approach different from the related work?
+Section 4. Experimental results: Milestones achieved so far (add all relevant experimental results). How do these results support your claim?
+Section 5. Future milestones: Dates and sub-goals (please set sub-goals on a weekly basis so that they can be done in a week)
+Section 6. Conclusion: Summary of your progress and your final expected goal (what do you expect to achieve or demonstrate for the final project?)
 
+Couples not necessarily started at first survey, may have been together long before 4+ years
+	right now we  only predict if they will break up, not 4 years exactly since many break ups have been together longer
+	should integrate length data if we really want to judge "will they make it 4 years"
+Difference between marriage and relationship?
+	break up and divorce much different - only have a few examples of divorce occuring
+how to mix continuous data and binary data from categorical data
+Same sex weighting?
 
-for this portion continuous, will evaluate mixing continuous and binaries categories in future 
+Construct features based on research and intuition
+	unemployment status during relationship
+	if relationship doesn’t match what respondent’s sexual orientation
+	length of relationship before cohabitation
+	if races of partners don’t match
+	age difference as continuous instead of categorical???
+	change in education
+	increase in number of children?
 
-
+Consider external data set
+	NCHS Marriage and Divorce Data
+	Only has demographic and some household information
 
 eecs 445 project work progress report due 11/7 @ 1155p
-	dianostics and error analysis, control experiments and justify algorithmic claims - sanity check
+	dianostics and error analysis
+	control experiments
+	justify algorithmic claims - sanity check
 
 ////////////////////////
-concern - calculate how many years they have been together
-then fill empty
-remove same sex
-some features have 1,2 values, others have 0,1
-only considering initial baseline answers - not updated demographic information like education
-discard people whose partner dies
-make unemployent category
-maybe build unemployed at any poit
-in school - change in education
-increase in number of children total 
-DIFFERENCE IN AGE BETWEEN PARTNER;
-consider same race/different race?
-
-
-//////////////////
 comments on data
 
 RESPONDENT_YRSED - based on ppeduc and first demographic background survey - continuous

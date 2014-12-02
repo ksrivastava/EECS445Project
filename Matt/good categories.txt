@@ -11,17 +11,20 @@ HOW_LONG_RELATIONSHIP - continuous
 AGE_DIFFERENCE - continuous
 RESPONDENT_YRSED - continuous
 PARTNER_YRSED - continuous
-HOW_LONG_AGO_FIRST_MET - continuous
 PPHOUSEHOLDSIZE - continuous
 PPINCIMP - continuous
 CHILDREN_IN_HH - continuous
 ZPNHWHITE_CAT - kinda continuous
 ZPNHBLACK_CAT - kinda continuous
 ZPHISP_CAT -- kinda continuous
-ZPMEDHHINC_CAT - kinda continuous
 ZPFORBORN_CAT - kinda continuous
+HHINC - continuous
+HOW_LONG_AGO_FIRST_MET - continuous
+HOW_LONG_AGO_FIRST_MET_CAT - continuous
+HOW_LONG_AGO_FIRST_ROMANTIC - continuous
+HOW_LONG_AGO_FIRST_COHAB - continuous
+PPAGECAT - CONTINUOUS
 
-PPAGECAT
 PPGENDER
 PPHHHEAD
 PPHOUSE
@@ -52,7 +55,7 @@ Q26
 Q27
 Q28
 Q29
-Q30
+Q30 - SWAP WITH PARENTAL_APPROVAL (LESS CATEGORIES)
 Q31_1
 Q31_2
 Q31_3
