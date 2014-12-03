@@ -23,7 +23,21 @@ def main():
 	writer = csv.writer(output_file, delimiter='\t')
 
 	data = []
-	features_set = ['PAPGLB_FRIEND','PAPRELIGION','PARTNER_RACE', 'PPMARIT','PPPARTYID3','PPREG9','PPRENT','Q12','Q29','Q7B','RESPONDENT_RACE']
+	features_set = [
+		'PAPGLB_FRIEND',
+		'PAPRELIGION',
+		'PARTNER_RACE',
+		'PPMARIT',
+		'PPPARTYID3',
+		'PPREG9',
+		'PPRENT',
+		'Q12',
+		'Q29',
+		'Q7B',
+		'RESPONDENT_RACE',
+		'PAPGLB_STATUS']
+
+	print 'original number of features' + str(len(features_set))
 
 	writer.writerow(features_set)
 

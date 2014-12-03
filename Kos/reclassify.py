@@ -34,10 +34,11 @@ def main():
                 else:
                     tmp_var = int(row[f]);
                     if f != 'success':
-                        if (f == 'Q30' and tmp_var == 4):
-                            tmp_var = -6;
-                        else:
-                            tmp_var -= 1;
+                        # if (f == 'Q30' and tmp_var == 4):
+                        #     tmp_var = -6;
+                        # else:
+                        #     tmp_var -= 1;
+                        tmp_var -= 1
                     record.append(tmp_var)
             writer.writerow(record)
 
