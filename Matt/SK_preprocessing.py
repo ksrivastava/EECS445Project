@@ -39,3 +39,9 @@ print 'dimensions after one hot ' + str(one_hotted.shape[0]) + ' by ' + str(one_
 
 
 np.savetxt('SK_preprocessed.tsv', one_hotted, delimiter = '\t')
+
+
+min_max_scaler = preprocessing.MinMaxScaler()
+scaled = min_max_scaler.fit_transform(one_hotted)
+
+np.savetxt('SK_scaled.tsv', scaled, delimiter = '\t')
