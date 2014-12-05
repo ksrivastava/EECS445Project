@@ -130,25 +130,25 @@ def main():
 
 			for f in categorical_features:
 				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					record.append(-1)
+					record.append(-2)
 				else:
 					record.append(row[f])
 
 			for f in continuous_features:
 				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					record.append(-1)
+					record.append(-2)
 				else:
 					record.append(row[f])
 
 			for f in binary_features:
 				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					record.append(-1)
+					record.append(-2)
 				else:
 					record.append(row[f])
 
 			for f in recode_features:
 				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					record.append(-1)
+					record.append(-2)
 				else:
 					tmp_var = int(row[f]);
 					tmp_var -= 1

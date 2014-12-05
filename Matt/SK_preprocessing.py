@@ -14,14 +14,13 @@ print 'original dimensions ' + str(data.shape[0]) + ' by ' + str(data.shape[1])
 
 
 #fill in missing values using median
-imp = Imputer(missing_values=-1, strategy='median', axis = 0)
+imp = Imputer(missing_values=-2, strategy='most_frequent', axis = 0)
 missing_filled = imp.fit_transform(data) 
 
 #convert categorical features into multiple binary sets
 cat_feature_index = list(xrange(12))
 print cat_feature_index
 
-np.savetxt('missing_filled.tsv', missing_filled, delimiter = '\t')
 
 enc = OneHotEncoder(categorical_features=cat_feature_index)
 
@@ -38,10 +37,17 @@ one_hotted = enc.transform(missing_filled).toarray()
 print 'dimensions after one hot ' + str(one_hotted.shape[0]) + ' by ' + str(one_hotted.shape[1]) 
 
 
-np.savetxt('SK_preprocessed.tsv', one_hotted, delimiter = '\t')
+m = data.shape[1] - 1;
+n = data.shape[0];
 
+yvalues = one_hotted[:,140];
+print yvalues
+
+valuestoscale = one_hotted[:,:139];
+print valuestoscale
 
 min_max_scaler = preprocessing.MinMaxScaler()
-scaled = min_max_scaler.fit_transform(one_hotted)
+scaled = min_max_scaler.fit_transform(valuestoscale)
+concatenated_final = np.column_stack((scaled,yvalues))
 
-np.savetxt('SK_scaled.tsv', scaled, delimiter = '\t')
+np.savetxt('SK_final.tsv', concatenated_final, delimiter = '\t')
