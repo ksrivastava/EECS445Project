@@ -129,29 +129,32 @@ plt.show()
 
 random_state = np.random.RandomState(0)
 cv = StratifiedKFold(y, n_folds=5)
-classifier = svm.SVC(kernel='linear', probability=True,
-                     random_state=random_state)
+classifier = GaussianNB()
 
-mean_tpr = 0.0
-mean_fpr = np.linspace(0, 1, 100)
-all_tpr = []
+
+
+mean_tpr_cv = 0.0
+mean_fpr_cv = np.linspace(0, 1, 100)
 
 for i, (train, test) in enumerate(cv):
-    probas_ = classifier.fit(x[train], y[train]).predict_proba(X[test])
+    probas_ = classifier.fit(x[train], y[train]).predict_proba(x[test])
     # Compute ROC curve and area the curve
-    fpr, tpr, thresholds = roc_curve(y[test], probas_[:, 1])
-    mean_tpr += interp(mean_fpr, fpr, tpr)
-    mean_tpr[0] = 0.0
-    roc_auc = auc(fpr, tpr)
-    plt.plot(fpr, tpr, lw=1, label='ROC fold %d (area = %0.2f)' % (i, roc_auc))
+
+    fpr_cv, tpr_cv, thresholds = roc_curve(y[test], probas_[:, 1])
+    mean_tpr_cv += interp(mean_fpr_cv, fpr_cv, tpr_cv)
+    mean_tpr_cv[0] = 0.0
+    roc_auc_cv = auc(fpr_cv, tpr_cv)
+    plt.plot(fpr_cv, tpr_cv, lw=1, label='ROC fold %d (area = %0.2f)' % (i, roc_auc_cv))
 
 plt.plot([0, 1], [0, 1], '--', color=(0.6, 0.6, 0.6), label='Luck')
 
-mean_tpr /= len(cv)
-mean_tpr[-1] = 1.0
-mean_auc = auc(mean_fpr, mean_tpr)
-plt.plot(mean_fpr, mean_tpr, 'k--',
-         label='Mean ROC (area = %0.2f)' % mean_auc, lw=2)
+
+mean_tpr_cv /= len(cv)
+mean_tpr_cv[-1] = 1.0
+mean_auc_cv = auc(mean_fpr_cv, mean_tpr_cv)
+
+plt.plot(mean_fpr_cv, mean_tpr_cv, 'k--',
+         label='Mean ROC (area = %0.2f)' % mean_auc_cv, lw=2)
 
 plt.xlim([-0.05, 1.05])
 plt.ylim([-0.05, 1.05])
