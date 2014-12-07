@@ -3,27 +3,27 @@
 Manually Selected Features with no repetitive information:
 
     categorical_features = [
-        'PAPGLB_FRIEND',
-        'PAPRELIGION',
-        'PARTNER_RACE',
+        'PAPGLB_FRIEND', #missing 10
+        'PAPRELIGION', #missing 15
+        'PARTNER_RACE', #missing 998
         'PPMARIT',
         'PPPARTYID3',
         'PPREG9',
         'PPRENT',
-        'Q12', # Have refused as -1
-        'Q29', # Have refused as -1
-        'Q7B', # Have refused as -1
-        'RESPONDENT_RACE',
-        'PAPGLB_STATUS'] # Have refused as 3
+        'Q12', # Have refused as -1, missing 992
+        'Q29', # Have refused as -1, missing 993
+        'Q7B', # Have refused as -1 missing 992
+        'RESPONDENT_RACE', # missing 998
+        'PAPGLB_STATUS'] # Have refused as 3, missing 1
 
     continuous_features = [
-        'AGE_DIFFERENCE',
+        'AGE_DIFFERENCE', # missing 1011
         'CHILDREN_IN_HH',
-        'DISTANCEMOVED_10MI',
-        'GENDER_ATTRACTION',
+        'DISTANCEMOVED_10MI', # missing 1052
+        'GENDER_ATTRACTION', #missing 1006
         'HHINC',
-        'HOW_LONG_AGO_FIRST_COHAB',
-        'HOW_LONG_AGO_FIRST_MET',
+        'HOW_LONG_AGO_FIRST_COHAB', #missing 1496
+        'HOW_LONG_AGO_FIRST_MET', #missing 1007
         'HOW_LONG_AGO_FIRST_ROMANTIC',
         'HOW_LONG_RELATIONSHIP',
         'PARTNER_MOM_YRSED',
@@ -79,7 +79,7 @@ Manually Selected Features with no repetitive information:
 
 
     recode_features = [
-        'PAPEVANGELICAL', #change to 0/1 from 1/2
+        'PAPEVANGELICAL', #change to 0/1 from 1/2  #missing 105
         'Q13A', #refused -1
         'Q25', #Reclassify from 1/2 to 0/1, #refused -1
         'Q26',  #Reclassify from 1/2 to 0/1
@@ -90,8 +90,13 @@ Manually Selected Features with no repetitive information:
 
 Data Set List:
 
-	all_features_manually_preprocessed_labeled.tsv (missing values and refused answers recorded as -2, pos: 1423, neg: 450, total 1873)
-	all_features_manually_preprocessed_unlabeled.tsv (missing values and refused answers recorded as -2, total, 4002)
-	all_features_manually_preprocessed_unlabeled_dropRef.tsv (dropped refused answers, 3991)
-	all_features_manually_preprocessed_labeled_dropRef.tsv (dropped refused, pos: 831 neg: 252)
+	1.all_features_manually_preprocessed_labeled.tsv (missing values and refused answers recorded as NaN, pos: 1423, neg: 450, total 1873)
+	2.all_features_manually_preprocessed_unlabeled.tsv (missing values and refused answers recorded as NaN, total, 4002)
+	3.all_features_manually_preprocessed_unlabeled_dropRef.tsv (dropped refused answers, 3991)
+    4.all_features_manually_preprocessed_labeled_dropRef.tsv (dropped refused, pos: 831 neg: 252)
+    5.all_features_manually_preprocessed_unlabeled_keepRef.tsv (refused as additional category)
+    6.all_features_manually_preprocessed_labeled_keepRef.tsv (refused as additional category, pos: 1423, neg: 450 )
+    7.all_features_manually_preprocessed_labeled_keepCatRef.tsv (keep resual in categorical data,other classifeid as missing)
 
+OneHot:
+    7.(missing: median, scaled continuous, recode ref as 0)
