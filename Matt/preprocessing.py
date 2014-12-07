@@ -14,13 +14,17 @@ from sklearn.grid_search import GridSearchCV
 poscounter = 0;
 negcounter = 0;
 
+# Missing value = -2
+
 def checkSucc(row):
 	
 	if (row['w4_q5'] == '1') or (row['w4_q1'] == '1'):
 		return -1
+		# -1 = they did not break up
 
 	if ((row['w4_q9']) == '1') or (row['w4_q3'] == '2') or (row['w4_q3'] == '1') or (row['W3_Q3'] == '2') or (row['W3_Q3'] == '1') or (row['W3_Q9'] == '1') or (row['W3_Q9'] == '3') or (row['W2_Q3'] == '1') or (row['W2_Q3'] == '2') or (row['W2_Q9'] == '1') or (row['W2_Q9'] == '3'):
 		return 1
+		# 1 = they broke up
 
 	return 0
 
