@@ -1,5 +1,5 @@
 import csv
-import numpy
+import os
 import numpy as np
 from sklearn import svm
 from sklearn import preprocessing
@@ -46,16 +46,16 @@ def main():
 	suc_writer = csv.writer(suc_out, delimiter='\t')
 
 	categorical_features = [
-		'PAPGLB_FRIEND',
+		'PAPGLB_FRIEND', 
 		'PAPRELIGION',
 		'PARTNER_RACE',
 		'PPMARIT',
 		'PPPARTYID3',
 		'PPREG9',
-		'PPRENT',
-		'Q12',
-		'Q29',
-		'Q7B',
+		'PPRENT',#refused -1
+		'Q12',  #refused -1
+		'Q29', #refused -1
+		'Q7B', #refused -1
 		'RESPONDENT_RACE',
 		'PAPGLB_STATUS']
 
@@ -97,39 +97,39 @@ def main():
 		'PPMSACAT',
 		'PPNET',
 		'Q24_MET_ONLINE',
-		'Q31_1',
-		'Q31_2',
-		'Q31_3',
-		'Q31_4',
-		'Q31_5',
-		'Q31_6',
-		'Q31_7',
-		'Q31_8',
+		'Q31_1', #refused is -1
+		'Q31_2',#refused is -1
+		'Q31_3',#refused is -1
+		'Q31_4',#refused is -1
+		'Q31_5',#refused is -1
+		'Q31_6',#refused is -1
+		'Q31_7',#refused is -1
+		'Q31_8',#refused is -1
 		'Q32_INTERNET',
 		'SAME_SEX_COUPLE',
 		'US_RAISED',
 		'ZPRURAL_CAT',
 		'PARENTAL_APPROVAL',
-		'Q33_1',  
-		'Q33_2',
-		'Q33_3', 
-		'Q33_4', 
-		'Q33_5', 
-		'Q33_6', 
-		'Q33_7',
-		'EITHER_INTERNET_ADJUSTED' 
+		'Q33_1',  #refused is -1
+		'Q33_2',#refused is -1
+		'Q33_3', #refused is -1
+		'Q33_4', #refused is -1
+		'Q33_5', #refused is -1
+		'Q33_6', #refused is -1
+		'Q33_7',#refused is -1
+		'EITHER_INTERNET_ADJUSTED'  #conflicting answers -1
 		]
 
 
 	recode_features = [
-		'PAPEVANGELICAL', #change to 0/1 from 1/2
-		'Q13A',
-		'Q25', #Reclassify from 1/2 to 0/1
-		'Q26',  #Reclassify from 1/2 to 0/1
-		'Q27',  #Reclassify from 1/2 to 0/1
-		'Q28',  #Reclassify from 1/2 to 0/1
-		'Q7A', #1/2 to 0/1 and -1 to empty
-		'Q8A'] #1/2 to 0/1 and -1 to empty
+		'PAPEVANGELICAL', #change to 0/1 from 1/2, no refused
+		'Q13A', #change to 0/1 from 1/2, refused is -1
+		'Q25', #change to 0/1 from 1/2, refused is -1
+		'Q26',  #change to 0/1 from 1/2, refused is -1
+		'Q27',  #change to 0/1 from 1/2, refused is -1
+		'Q28', #change to 0/1 from 1/2, refused is -1
+		'Q7A',#change to 0/1 from 1/2, refused is -1
+		'Q8A'] #change to 0/1 from 1/2, refused is -1
 
 	success = ['success']
 
@@ -146,25 +146,29 @@ def main():
 
 			for f in categorical_features:
 				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					cat_record.append(-2)
+					cat_record.append(-1)
 				else:
 					cat_record.append(row[f])
 
 			for f in continuous_features:
 				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					con_record.append(-2)
+					con_record.append(-1)
 				else:
 					con_record.append(row[f])
 
 			for f in binary_features:
-				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					rem_record.append(-2)
+
+				#-1 is "probably not met online, q32 and q24 disagree", so should be reclassified as 0
+				if f == 'EITHER_INTERNET_ADJUSTED' and (row[f] == '-1' or row[f] == -1):
+					rem_record.append(0)
+				elif (row[f] == '-1' or row[f] == -1  or row[f] == ' '):
+					rem_record.append(-1)
 				else:
 					rem_record.append(row[f])
 
 			for f in recode_features:
 				if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-					rem_record.append(-2)
+					rem_record.append(-1)
 				else:
 					tmp_var = int(row[f]);
 					tmp_var -= 1
@@ -193,6 +197,14 @@ def main():
 	rem_data = np.genfromtxt('rem_out.tsv', delimiter='\t')
 	suc_data = np.genfromtxt('suc_out.tsv', delimiter='\t')
 
+	os.remove('cat_out.tsv')
+	os.remove('con_out.tsv')
+	os.remove('rem_out.tsv')
+	os.remove('suc_out.tsv')
+
+
+
+
 	# data = np.genfromtxt('all_features_manually_preprocessed.tsv',  delimiter='\t', names=True)
 	print cat_data
 	print cat_data.shape
@@ -207,12 +219,16 @@ def main():
 	print suc_data.shape
 
 	#fill in missing values using median
-	cat_imp = Imputer(missing_values=-2, strategy='most_frequent', axis = 0)
+	cat_imp = Imputer(missing_values=-1, strategy='most_frequent', axis = 0)
 	cat_data = cat_imp.fit_transform(cat_data) 
 	rem_data = cat_imp.fit_transform(rem_data) 
 
-	con_imp = Imputer(missing_values=-2, strategy='median', axis = 0)
+	con_imp = Imputer(missing_values=-1, strategy='median', axis = 0)
 	con_data = con_imp.fit_transform(con_data) 
+
+	# concatenated_before = np.concatenate((cat_data, con_data,rem_data), axis=1)
+	# concatenated_before = np.column_stack((concatenated_before,suc_data))
+	# np.savetxt('After_manual_preprocessing.tsv',concatenated_before, delimiter='\t')
 
 	enc = OneHotEncoder()
 	enc.fit(cat_data)
@@ -230,6 +246,8 @@ def main():
 	con_data = min_max_scaler.fit_transform(con_data)
 
 	concatenated_final = np.concatenate((cat_data, con_data,rem_data), axis=1)
+
+	print concatenated_final.shape
 	concatenated_final = np.column_stack((concatenated_final,suc_data))
 
 	np.savetxt('preprocessed.tsv', concatenated_final, delimiter = '\t')
