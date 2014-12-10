@@ -7,21 +7,16 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
+from sklearn.feature_selection import RFE
 from sklearn.grid_search import GridSearchCV
+from sklearn.svm import LinearSVC
 
-data = np.genfromtxt('SK_scaled.tsv', skip_header=False, delimiter='\t')
-m = data.shape[1];
-n = data.shape[0];
-print m
-print n
-#fill in missing values using median
+data = np.genfromtxt('preprocessed.tsv', delimiter='\t')
 
-
-targets = data[:, 139]
-features = data[:, :139]
+targets = data[:, 140]
+features = data[:, :140]
 
 print targets
-print ' '
 print features
 
 training_set_percentage = 0.7;
@@ -32,11 +27,10 @@ test_set_percentage = 1 - training_set_percentage;
 m = features.shape[1]
 n = features.shape[0]
 
-print 'dimensions ' + str(m) + ' by ' + str(n) 
-
-
 training_set_size = int(training_set_percentage * n)
 testing_set_size = n - training_set_size
+
+print 'training set size ' + str(training_set_size) + 'testing_set_size' + str(testing_set_size)
 
 xTrain = features[:training_set_size, :]
 yTrain = targets[:training_set_size]
@@ -44,14 +38,41 @@ yTrain = targets[:training_set_size]
 xTest = features[training_set_size:, :]
 yTest = targets[training_set_size:]
 
-# Switch successful and unsuccessful
-yTrain *= -1
-yTest *= -1
-
 # Feature selection: Univariate
-# sel = SelectKBest(chi2, k=10)
-# xTrain = sel.fit_transform(abs(xTrain), yTrain)
-# xTest = sel.transform(xTest)
+sel = SelectKBest(chi2, k=1)
+xTrain = sel.fit_transform(abs(xTrain), yTrain)
+xTest = sel.transform(xTest)
+
+features_scores = sel.scores_
+
+print features_scores
+print features_scores.max()
+print features_scores.argmax()
+print type(features_scores)
+
+#np.savetxt('out.tsv',features_scores.transpose(), delimiter='\t')
+
+# xTrain = LinearSVC(C=1, penalty="l1", dual=False).fit_transform(xTrain,yTrain);
+
+print xTrain
+print xTrain.shape
+
+# svmselector = svm.SVC(kernel='linear')
+# selector = RFE(svmselector, 10, step = 1)
+# selector = selector.fit(xTrain, yTrain)
+# print "\tTraining accuracy: " + str(selector.score(xTrain, yTrain) * 100)
+# print "\tTesting accuracy: " + str(selector.score(xTest, yTest) * 100)
+ 
+
+# chosen = selector.support_
+# print chosen
+
+# for idx, val in enumerate(chosen.tolist()):
+#     if str(val) == 'True':
+#          print idx
+
+# print selector.ranking_
+# # Training
 
 gnb = GaussianNB()
 
@@ -63,10 +84,11 @@ parameters = {'n_neighbors':[4, 12, 20], 'algorithm':('auto', 'ball_tree', 'kd_t
 kvr = KNeighborsClassifier()
 knn = GridSearchCV(estimator=kvr, param_grid=parameters)
 
-# Training
 gnb.fit(xTrain, yTrain)
 clf.fit(xTrain, yTrain)
 knn.fit(xTrain, yTrain)
+
+
 
 
 def confusion_matrix(pred, actual):

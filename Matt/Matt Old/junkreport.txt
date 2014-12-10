@@ -1,0 +1,399 @@
+/*** Ignore this part 
+The predictor learns the models for successful and unsuccessful couples by evaluating responses from over four thousand couples from the “How Couples Meet and Stay together” survey[10]. The predictor considers features from a few different types of information: paired demographic information, personal information, household information, and relationship information. 
+
+Given this relatively small dataset with a large amount of features, a big part of our project has to do with feature selection. In other words, we will use a few techniques to try and extract features that contribute most to a couples relationship. These techniques will be discussed further below. 
+
+After implementing the various feature selection algorithms, we will then apply each one to different models: Support Vector Classifier (SVC), a Naive-Bayes model (NB) and a K-Neighbors model (KNN). 
+
+Variables List:
+
+We categorize the variables into four parts. 
+
+
+
+Category
+Variables
+Paired demographic information [a]
+Age, race/ethnicity, gender, level of education[b], religion, political party affiliation, income, the level of education of mothers
+Personal Information
+Living arrangements with partner, previous number of marriages, respondent’s gender attraction, region[b], current employment status[b]
+Household information
+Household income[b], household composition[b]
+Relationship information
+Whether the couple attended same high school/college/university or grew up in the same town, legal status of relationship, how often they visited relatives, the length of current relationship, how, when and where the respondents met their partners[c], how their parents felt about their partner, the respondents’ perceived quality of their relationship[c][d], status of relationship[b][e]
+
+[a] Paired means we have data of both the respondents and their partner 
+[b] These data are updated in follow-up surveys if possible. Only the respondent’s level of education is updated but not his partner’s
+[c] These two list of variables are based on two textual answers and were encoded into categorical data 
+[d] The perceived quality data was only collected in wave 1 and wave 4. 
+[e] The status of relationship variable is a flag on if the partners still stayed together. 
+
+
+Wrapper and embedded methods
+We will do experiments to see which methods give us best result. T In addition, in some category, we may be faced with the scarcity of some category in the data set. For instance, we have only 2 vietnamese examples in the race category. So we need to either do laplace smoothing or remove these examples as outliers based on our experiments. 	
+
+
+[5] Earnings equality and relationship stability for same-sex and heterosexual couples, Weisshaar, Katherine
+[6] Sample weights and regression analysis
+[7] Searching for a Mate: The Rise of the Internet as a Social Intermediary
+[8] The Meaning and Use of the Area under a Receiver Operating Characteristic (ROC) Curve
+[9] How Americans (Mostly Don't) Find an Interracial Partner: Race and Ethnic Differences in the Use of Social Foci and Networks for Couple Formation
+[10] Rosenfeld, Michael J., Reuben J. Thomas, and Maja Falcon. How Couples Meet and Stay Together (HCMST), Wave 1 2009, Wave 2 2010, Wave 3 2011, Wave 4 2013, United States. ICPSR30103-v7. Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor], 2014-09-0
+
+
+
+=== YL experiment ====
+
+Ratio of negative examples
+[0.82875423409860749, 0.82875423409860749, 0.828907435508346, 0.82875423409860749, 0.82875423409860749, 0.828907435508346, 0.828907435508346, 0.63184584178498993, 0.63163265306122451, 0.62882527147087863]
+Logistic regression
+[0.8296473485381396, 0.8281421904717241, 0.82666117692125718, 0.82974205290939129, 0.83124808533033201, 0.82912803505076005, 0.82903288266483555, 0.62917724619974069, 0.64874825569496208, 0.62715636339002567]
+[0.82518796992481214, 0.83120300751879694, 0.83787878787878789, 0.824812030075188, 0.81879699248120308, 0.8268939393939394, 0.84242424242424241, 0.61616161616161613, 0.63775510204081631, 0.62561576354679804]
+Naive Bayes
+[0.82588235294117651, 0.83105882352941174, 0.82352941176470584, 0.82823529411764707, 0.82870588235294118, 0.80313092979127132, 0.80550284629981028, 0.43274111675126903, 0.57397959183673475, 0.62345679012345678]
+[0.84022556390977443, 0.81954887218045114, 0.85037878787878785, 0.83082706766917291, 0.82894736842105265, 0.79166666666666663, 0.82007575757575757, 0.45454545454545453, 0.56122448979591832, 0.65024630541871919]
+SVM
+[0.82588235294117651, 0.83105882352941174, 0.84345351043643269, 0.82823529411764707, 0.82870588235294118, 0.84392789373814037, 0.84392789373814037, 0.63324873096446699, 0.72066326530612246, 0.62345679012345678]
+[0.84022556390977443, 0.81954887218045114, 0.83333333333333337, 0.83082706766917291, 0.82894736842105265, 0.83143939393939392, 0.83143939393939392, 0.6262626262626263, 0.62755102040816324, 0.65024630541871919]
+KNN
+[0.82588235294117651, 0.83105882352941174, 0.84345351043643269, 0.82823529411764707, 0.83247058823529407, 0.87381404174573052, 0.85531309297912717, 0.64340101522842641, 0.7767857142857143, 0.62345679012345678]
+[0.84022556390977443, 0.81954887218045114, 0.83333333333333337, 0.83082706766917291, 0.83082706766917291, 0.82007575757575757, 0.84280303030303028, 0.63636363636363635, 0.63265306122448983, 0.65024630541871919]
+
+=======================
+
+Ablative analysis 
+
+We group our features into components by reference to the link prediction problem in network. [1][2]
+
+Based on the variables we have, we can have four major components of features.
+
+One component is used to calculate the egalitarian between respondent and partner. This should include all the paired demographic information (the difference between this information may need to be recalculated). We may also include variables whether the couple attended same high school/college/university or grew up in the same town. 
+
+The second group of features is defined as the personal information of the survey respondent. This may include the data in the personal information group as well as the respondent’s information in the paired demographic information. We may also include the subject level of attractiveness for the respondent  data in this category.
+
+The third component of feature can be described as variables that reveals the strength of the couples. This category may have household income, the living arrangements variables, legal status of relationship, how often they visited relatives, and the length of current relationship. 
+
+The fourth component of features are those that involve the third person’s participation in the relationship, including how their parents felt about their partner, how, when and where the respondents met their partners and household composition. The household composition variables include the detailed information of people who live together with the couples, including age, gender and their relationship with the respondent. 
+
+We can do abative analysis to add a component at a time to see which component contributes most to our model and choose features according to the result. 
+
+“a new feature selection algorithm”
+					
+HuangY,McCullaghP,BlackN,HarperR.Feature selection and classification model construction on type 2 diabetic patients’ data. Artif Intell Med 2007;41:251-62.
+
+	 		 		 	 	 		
+			
+Bayat S, Cuggia M, Kessler M, Briançon S, Le Beux P, Frimat L. Modelling access to renal transplantation waiting list in a French healthcare network using a Bayesian method. Stud Health Technol Inform 2008;136:605-10.					
+
+“early detection of high risk patients suffering from myocardial ischemia using electrocardiographic data”
+	 		 		 	 	 				
+					
+Goletsis Y, Papaloukas C, Fotiadis DI, Likas A, Michalis LK. Automated ischemic beat classification using genetic algorithms and multicriteria decision analysis. IEEE Trans Biomed Eng 2004;51:1717-25
+
+	 		 		 	 	 		
+			
+“a new distance measure in the case of mixed variables (quantitative and nominal)”				
+Juhola M, Laurikkala J. On distance computation in space of mixed-type variables in medical data mining. Stud Health Technol Inform 2002;90:425-30.
+
+
+“extract data for a long period of time” [5, 19, 25, 30, 40, 48, 61]
+				
+
+Data cleaning and preprocessing [61][72]
+		 		
+			
+				
+					
+The number of these variables varies from 4 as in [42] and [73] to 11’118 like in [46].
+							
+					
+46. Pakhomov SV, Buntrock J, Chute CG. Prospective recruitment of patients with congestive heart failure using an ad-hoc binary classifier. J Biomed Inform 2005;38:145-53.
+				
+			
+		
+	 		 		 	 	 		
+			
+				
+					
+Normalization of the numerical values into the interval [0, 1] is the solution in this situation [73]. Another approach to resolve the variable domina- tion is the discretization of numerical variables as in [61]
+				
+
+	 		 		 	 	 		
+			
+				
+					
+.Lin and Haug, for example, added metadata describing the structured data variables and domain knowledge to aggregate variables automatically [61].
+				
+			
+		
+	 		 		 	 	 		
+			
+				
+					
+Data reduction permits also to reduce ambiguous variables from the dataset [36].
+						
+	 		 		 	 	 		
+			
+				
+					
+The ranking of the attributes was one of the impor- tant contributions of the use of data mining for important variable selection [16].
+				
+			
+			 	 	 		
+			
+				
+					
+detect high-risk patients early [41, 43, 44, 45, 77]
+
+	 		 		 	 	 		
+			
+				
+					
+
+
+The association rules find all frequent relationship among variables and the pattern is represented in the form of (A,B,C) where A, B and C are variables while formal rules extract associations of conditions and a conclusion and the pattern takes the form of “IF A and/or B THEN C” [25, 26, 27, 32]
+
+
+	 		 		 	 	 		
+			
+				
+					
+An example of such an algorithm was proposed by Bennett et al. when they combine SVM and decision tree algorithm [88]
+				
+		
+
+https://mlcorner.wordpress.com/tag/specificity/
+
+
+“ How Couples Meet and Stay Together (HCMST) surveyed how Americans met their spouses and romantic partners, and compared traditional to non-traditional couples. This collection covers data that was gathered over four waves. Demographic information includes age, race/ethnicity, gender, level of education, household composition, religion, political party affiliation, and household income. During the first wave, respondents were asked about their relationship status, including the gender, ethnicity, and race of their current partner, as well as the level of education of their parents. They were also asked about their living arrangements with their partner, the country, state, and city the respondent and/or the respondent's partner resided in most from birth to age 16, and whether the couple attended the same high school/college/university, or grew up in the same town. Information was collected on the legal status of the relationship, the city/state where the partnership was legalized, and how many times the respondent had previously been married. Additionally, respondents were asked about how often they visited with relatives, which gender they were most attracted to, their earned income in 2008, and the length of their current relationship. Finally, respondents were asked to recall how, when, and where they met their partner, how their parents felt about their partner, and to describe the perceived quality of their relationship. The second wave followed up with respondents one year after wave 1. Information was collected on respondents' changes, if any, in marital status, relationship status, living arrangements, and reasons for separation where applicable. The third wave followed up with respondents one year after the second wave, and collected information on respondents' relationships reported in the first two waves, again including any changes in the status of the relationship and reasons for separation. The fourth wave followed up with respondents two years after Wave 3. In addition to information on relationship status and reasons for separation, Wave 4 includes the subjective level of attractiveness for the respondent and their partner. 
+
+The data is being released in two parts: part one is available for public use and part two is available for restricted use. The public use data contains waves 1-4, including the addition of nine variables collecting information such as race, household income, whether the respondent was born outside of the United States, zip code relative to rural area, and respondents' living arrangements between birth and 16 years of age. The restricted use data contains waves 1-3, and differs from the public use data by including FIPS codes for state of marriage and state of residence, town or city where the respondent was raised, and qualitative variables revised by the Principal Investigator (Q24 and Q35), consisting of respondent's answers to how they first met their partner and the quality of their relationship in their own words.” 
+				
+					
+“ Survey questions were mostly answered online; some follow-up surveys were conducted by phone.” 
+
+
+
+   The restricted use data contains waves 1-3, and differs from the public use data by including FIPS codes for state of marriage and state of residence, town or city where the respondent was raised, and qualitative variables revised by the Principal Investigator (Q24 and Q35), consisting of respondent's answers to how they first met their partner and the quality of their relationship in their own words.” 
+
+
+	Model is optimistic.
+
+Positive: Unsuccessful
+Negative: Successful
+
+True Positive (TP):    If the instance is positive and it is classified as positive
+They break up. We predict break up.
+False Negative (FN): If the instance is positive but it is classified as negative
+They break up. We predict stay together.
+True Negative (TN):  If the instance is negative and it is classified as negative
+They stay together. We predict stay together.
+False Positive (FP):   If the instance is negative but it is classified as positive
+They stay together. We predict break up. 
+WORST CASE
+
+
+Accuracy : This is the simplest scoring measure. It calculates the proportion of correctly classified instances.
+Accuracy = (TP + TN) / (TP+TN+FP+FN)
+Sensitivity (also called Recall or True Positive Rate): Sensitivity is the proportion of actual positives which are correctly identified as positives by the classifier.
+Sensitivity = TP / (TP +FN)
+Specificity  (also called  True Negative Rate) : Specificity relates to the classifier’s ability to identify negative results. Consider the example of medical test used to identify a certain disease. The specificity of the test is the proportion of patients that do not to have the disease and will successfully test negative for it. In other words:
+Specificity: TN / (TN+FP)
+Precision: This is a measure of retrieved instances that are relevant. In other words:
+Precision: TP/(TP+FP)
+
+
+
+				
+		
+
+
+This will be a (max) 6 page document updating your project proposal by outlining your progress to date, clarifying your problem statement and approach, progress you have made, and specifying your plans going forward.
+	
+	
+	Formatting:
+	Please submit pdf file with 1inch margin on all sides (use \usepackage{fullpage} if you use plain latex) with 11 pt font size.
+	In your project progress report, please include the following: 
+	 
+
+
+
+General Application: 
+
+Weight Addressing Methods:[5] []
+
+	 
+
+Ordered logit model 
+
+Censoring problem
+					
+discrete-time event history models
+
+
+
+
+Sample Weights and Regression Analysis, Christopher Winship (Weight addressing tutorial)
+
+
+
+
+
+
+While doing cross validation: 
+	Some subsamples may be underrepresented. Stratified cross validation. 
+
+
+
+Missing value issues:
+
+removing case with missing values
+
+
+
+
+
+Feature Engineering 
+
+
+
+
+
+Parameter Search
+Cross Validation 
+Knowledge Extraction 
+Evaluation 
+
+
+
+Performance: 
+Bias: Classification accuracy of couples that stay together of the data set.  (testing set size)
+	
+Construct of confusion matrix:
+Roc plot 
+
+
+
+				
+		
+****/	 			
+		
+	 
+
+
+
+
+
+
+
+As stated in the problem description above , our main goal is to predict the sign of the edge between the node of respondent(R) and its partner(P).  We denote a sample data as a graph G(R, P) and the sign of the relationship as s(R, P). We set positive couples as those who didn’t break up within the four-year duration of survey, i.e s(R, P) = 1. The negative couples where s(R, P) = -1 are those who broke up at any time during the same timeframe. 
+
+
+
+
+
+Principal Component Analysis (PCA)
+Exploratory Factor Analysis
+    
+4.Use information measures like information gain to select relevant features 
+
+
+c(R, P) functions [2]
+Since our graph is local graph which only involves two nodes, so we can refer to the similarity score functions that involve neighbors to calculate our c(R, P) scores.’
+
+
+We consider two kinds of problems as similar work. One similar problem is risk factors identification for a specific disease in clinical data mining. Because the similarity between our data format, i.e survey data, with those in clinical data set, we can refer to clinical machine learning problem to identify the most important factors that determine the successful couples in a sense that successful relation is regarded as a risk. [3]
+Another similar problems can be link-prediction problems in social network.  We can define our problem as a undirected local graph with two nodes (couples) and the edge as the relationship between the nodes. So our problem can be redefined as prediction of signs of the links between two nodes. [1] [2]
+
+
+Subjective method where the domain experts perform the feature selection “interview” 
+
+
+
+Successful couples: [5]
+- didn't break up
+- perceived good quality of relationship
+- enter cohabitation or marriage
+
+
+Same-sex couples with unequal earnings report the lowest averages of relationship satisfaction across all income levels
+Heterolsexual couples with equal earnings do report noticebaly lower relationship quality relative to those with unequal earnings 
+	
+
+The raw dataset is based on the survey “How Couples Meet and Stay together ”, which explored how Americans met their spouses and romantic partners.  The survey questions were mostly asked online and some follow-up surveys were conducted by phones. This collection covers data gathered over four waves.
+The adult profile and main survey was conducted in wave 1, 2009. It collected the respondent’s and his partner’s demographic information if any. Then the valid respondent with a partner was asked how, where and when he met his partner and the detailed information of the relationship.Respondents who had no spouse or main romantic partner were dropped from the Main Survey. Unpartnered respondents remain in the dataset, and demographic background variables are available for them. In the following waves( wave 2 2010, wave 3 2011, wave 4 2013),  follow-up surveys are conducted to collection information on respondents' changes, if any, in marital status, relationship status, living arrangements, and reasons for separation where applicable. Wave 4 includes the subjective level of attractiveness for the respondent and their partner.
+
+The original sample size is 4002 and has 457 variables for each data sample. The valid cases we take into account are respondents who completed at least one follow up survey. There are around 455 negative examples and 2002 positive examples remaining according to the 	W234_COMBO_BREAKUP variables in the original dataset.  
+
+
+
+successful ones as negative. 
+
+
+Model is optimistic.
+
+Positive: Unsuccessful
+Negative: Successful
+
+True Positive (TP):    If the instance is positive and it is classified as positive
+They break up. We predict break up.
+False Negative (FN): If the instance is positive but it is classified as negative
+They break up. We predict stay together.
+True Negative (TN):  If the instance is negative and it is classified as negative
+They stay together. We predict stay together.
+False Positive (FP):   If the instance is negative but it is classified as positive
+WORST CASE
+
+
+
+
+
+
+We can use the one in wave 1 as a feature and the one in wave 4 as a flag to exclude outliers, i.e couples that stayed together but had a poor perceived quality of their relationship. In addition, the change of the perceived quality of the relationship may also be taken into account.
+
+Not sure on if take when to break up into account as a stability evaluation of the relationship.
+
+Transitive meetings mean respondent and his partner already knew who played a role in introducing the couple to each other. Institutional meetings refer to an exclusive, institutionalized setting(social foci) including club or group that has a membership. Non-exclusive meetings are those without mentioning institutions or previously-existing social network connections that occur between strangers in a mostly public setting (include bars and restaurants etc.).  
+
+We currently don’t consider this because in one relevant work [5], the author addressed this issue [6] and said there is no much difference between weighted and unweighted models. So we will leave this issue as an option for our project.
+
+
+Naive Bayes:
+	Training accuracy: 67.8486997636
+	Testing accuracy: 74.1758241758
+{'FP': 13.736263736263737, 'TN': 37.91208791208791, 'FN': 12.087912087912088, 'TP': 36.26373626373626}
+
+
+Support Vector Classification:
+Best hyperparameters: {'kernel': 'linear', 'C': 1, 'gamma': 0.001}
+	Training accuracy: 70.4491725768
+	Testing accuracy: 69.2307692308
+{'FP': 17.032967032967033, 'TN': 36.26373626373626, 'FN': 13.736263736263737, 'TP': 32.967032967032964}
+
+
+K-Nearest Neighbors:
+Best hyperparameters: {'n_neighbors': 20, 'algorithm': 'ball_tree'}
+	Training accuracy: 67.6122931442
+	Testing accuracy: 68.1318681319
+{'FP': 20.32967032967033, 'TN': 38.46153846153847, 'FN': 11.538461538461538, 'TP': 29.67032967032967}
+
+
+Naive Bayes:
+	Training accuracy: 83.8291380625
+	Testing accuracy: 83.6298932384
+{'FP': 4.98220640569395, 'TN': 64.05693950177937, 'FN': 11.387900355871885, 'TP': 19.572953736654807}
+
+Support Vector Classification:
+{'kernel': 'linear', 'C': 1, 'gamma': 0.001}
+	Training accuracy: 85.2784134249
+	Testing accuracy: 81.8505338078
+{'FP': 10.320284697508896, 'TN': 67.61565836298932, 'FN': 7.829181494661921, 'TP': 14.23487544483986}
+
+Nearest Neighbors:
+{'n_neighbors': 12, 'algorithm': 'auto'}
+	Training accuracy: 85.2021357742
+	Testing accuracy: 81.8505338078
+{'FP': 10.320284697508896, 'TN': 67.61565836298932, 'FN': 7.829181494661921, 'TP': 14.23487544483986}
+
+
+ 
