@@ -77,9 +77,6 @@ kvr = KNeighborsClassifier()
 scores = dict()
 
 
-
-
-
 fpr_mul = dict()
 tpr_mul = dict()
 roc_auc_mul = dict()

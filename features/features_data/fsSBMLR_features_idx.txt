@@ -1,0 +1,3 @@
+Algorithm:fsSBMLR
+DataFile:SK_manual_kepCatRef_labelled
+104	138	127	
