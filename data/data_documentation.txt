@@ -100,3 +100,6 @@ Data Set List:
 
 OneHot:
     7.(missing: median, scaled continuous, recode ref as 0)
+
+cd /Applications/Feature' Selection Package'/fspackage/
+load_fspackage

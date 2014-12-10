@@ -1,5 +1,5 @@
 import csv
-
+import numpy as np
 
 
 def checkSucc(row):
@@ -26,8 +26,12 @@ def main():
     # output_file = open('all_features_manually_preprocessed.tsv', 'wb')
     # output_file = open('../data/all_features_manually_preprocessed_labeled.tsv', 'wb')
     # output_file = open('../data/all_features_manually_preprocessed_unlabeled.tsv', 'wb')
-    output_file = open('../data/all_features_manually_preprocessed_unlabeled_dropRef.tsv', 'wb')
+    # output_file = open('../data/all_features_manually_preprocessed_unlabeled_dropRef.tsv', 'wb')
     # output_file = open('../data/all_features_manually_preprocessed_labeled_dropRef.tsv', 'wb')
+    # output_file = open('../data/all_features_manually_preprocessed_labeled_keepRef.tsv', 'wb')
+    # output_file = open('../data/all_features_manually_preprocessed_unlabeled_keepRef.tsv', 'wb')
+
+    output_file = open('../data/all_features_manually_preprocessed_labeled_keepCatRef.tsv', 'wb')
 
     data_reader = csv.DictReader(data_file, header, delimiter='\t')
     writer = csv.writer(output_file, delimiter='\t')
@@ -151,36 +155,37 @@ def main():
         'Q8A'] #1/2 to 0/1 and -1 to empty #refused -1
 
 
-    # success = ['SUCCESS']
+    success = ['SUCCESS']
 
     # Labelled
-    # writer.writerow(categorical_features + continuous_features + binary_features + recode_features + success)
+    writer.writerow(categorical_features + continuous_features + binary_features + recode_features + success)
 
     # Unlabelled
-    writer.writerow(categorical_features + continuous_features + binary_features + recode_features)
+    # writer.writerow(categorical_features + continuous_features + binary_features + recode_features)
 
     poscounter = 0
     negcounter = 0
+    missing =  np.nan
 
     for row in data_reader:
         refusal = False
         # Labelled
-        # status = checkSucc(row)
+        status = checkSucc(row)
         # Unlabelled
-        status = 1
+        # status = 1
         if status:
 
-            for f in answers_with_refusal:
-                 if f == 'PAPGLB_STATUS':
-                    if (row[f] == 3 or row[f] == '3'):
-                        refusal = True
-                    break
-                 if (row[f] == 1 or row[f] == '-1'):
-                    refusal = True
-                 break
-
-            if refusal:
-                break
+            # for f in answers_with_refusal:
+            #      if f == 'PAPGLB_STATUS':
+            #         if (row[f] == 3 or row[f] == '3'):
+            #             refusal = True
+            #         break
+            #      if (row[f] == 1 or row[f] == '-1'):
+            #         refusal = True
+            #      break
+            #
+            # if refusal:
+            #     break
 
             if status > 0:
                 poscounter += 1
@@ -195,54 +200,60 @@ def main():
 
             for f in categorical_features:
                 if f == 'PAPGLB_STATUS':
-                    # if (row[f] == 3 or row[f] == '3' or row[f] == ' '):
-                    if (row[f] == ' '):
-                        record.append(-2)
+                    if (row[f] == 3 or row[f] == '3'):
+                        record.append(0)
+                    elif row[f] == ' ':
+                        record.append(missing)
                     else:
                         record.append(row[f])
                     continue
 
-                # if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-                if (row[f] == ' '):
-                    record.append(-2)
+                if (row[f] == '-1' or row[f] == -1):
+                    record.append(0)
+                elif row[f] == ' ':
+                    record.append(missing)
                 else:
                     record.append(row[f])
 
             for f in continuous_features:
 
-                # if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-                if (row[f] == ' '):
-                    record.append(-2)
+                if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
+                # if (row[f] == ' '):
+                    record.append(missing)
                 else:
                     record.append(row[f])
 
+
+            #######TODO:Check Possible Mistake
             for f in binary_features:
                 if f == 'EITHER_INTERNET_ADJUSTED':
-                    # if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-                    if (row[f] == ' '):
+                    if (row[f] == '-1' or row[f] == -1):
+                    # if (row[f] == ' '):
                         record.append(0)
+                    elif row[f] == ' ':
+                        record.append(missing)
                     else:
                         record.append(row[f])
                     continue
 
-                # if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-                if (row[f] == ' '):
-                    record.append(-2)
+                if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
+                # if (row[f] == ' '):
+                    record.append(missing)
                 else:
                     record.append(row[f])
 
 
             for f in recode_features:
-                # if (row[f] == '-1' or row[f] == -1  or row[f] == ' ') :
-                if (row[f] == ' '):
-                    record.append(-2)
+                if (row[f] == '-1' or row[f] == -1  or row[f] == ' '):
+                # if (row[f] == ' '):
+                    record.append(missing)
                 else:
                     tmp_var = int(row[f])
                     tmp_var -= 1
                     record.append(tmp_var)
 
             # Labelled
-            # record.append(status)
+            record.append(status)
             writer.writerow(record)
 
     data_file.close()

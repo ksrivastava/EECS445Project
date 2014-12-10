@@ -80,6 +80,7 @@ for s in extract_set_comb:
     extract_data = data[:,index]
     #remove missing values
     extract_data = extract_data[~np.isnan(extract_data).any(1)]
+    
     y = extract_data[:,0]
     x = extract_data[:,1:]
     ratio.append(1 - sum(y)/len(y))
@@ -108,6 +109,7 @@ for s in extract_set_comb:
     parameters = {'n_neighbors':[4, 12, 20], 'algorithm':('auto', 'ball_tree', 'kd_tree', 'brute')}
     kvr = KNeighborsClassifier()
     knn = GridSearchCV(estimator=kvr, param_grid=parameters)
+
     gnb.fit(x_train, y_train)
     clf.fit(x_train, y_train)
     knn.fit(x_train, y_train)
