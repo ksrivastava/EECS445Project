@@ -1,0 +1,127 @@
+Hi Christopher, Matthew, Kaustubh, Yao X., and Yao L.
+
+Hope everything is going well with you. Also, hope you are learning a
+lot and enjoying the class.
+
+First of all, we really appreciate your time and efforts you put into
+the project. We are happy that you made progress, and would like to
+provide our feedback for further improving your project and report.
+
+It took quite a while to compile/consolidate informed written
+feedback, and we are sorry for not sending this sooner. We have worked
+very hard to provide as meaningful feedback as possible. The opinions
+expressed in the review are "compiled" reviews about your report, and
+please note that there may be still some misunderstandings about some
+details in the review (due to the large bulk of reports we had to
+review in a limited time period). We also gave you other (sometimes
+more detailed) feedback during our in-person discussion meetings
+recently, so what we wrote here don’t necessarily reflect all our
+suggestions/feedback.
+
+We ask you not to worry too much about the numerical score itself (in
+fact, the differences in scores of the individual projects were fairly
+small, say 0.7 as standard deviation, where the mean score was 8.1).
+However, please read the reviews carefully and try to use this as an
+opportunity to get feedback about your work and think about how to
+improve your project.
+
+If you have further questions, I will be happy to discuss more about
+your project during my office hours.
+
+Thank you very much!
+
+Best regards,
+
+Honglak and Ye
+
+-----
+
+Summary
+This project proposes a model which predicts whether or not a couple
+will last. This is an interesting topic, and it can potentially make a
+big societal impact. The prediction made by this work is very
+objective (i.e., based on objectively measurable features) which is
+both a strength and a weakness since the outcome of such events
+(lasting or failing) can be affected by much randomness and people do
+not always make rational decisions (and/or the dataset probably won’t
+capture very subtle and complicated nature of human relationships).
+However, it’s very interesting to see how much machine learning can
+explain and predict the outcomes.
+
+Some weakness of the project comes from the nature of the dataset.
+First, the amount of training data is quite limited compared to the
+number of features. Besides, the distribution of training examples in
+the data set seems to be very different from the reality claimed in
+the introduction part. (Ratio of positive and negative instances is
+3:1 in the dataset but 1:1 in real world). This is not controllable in
+the scope of the project, so it’s less of a concern if properly dealt
+with.
+
+
+Novelty
+The novelty of this project mainly comes from the application problem
+being tackled. Not much work has been done in applying machine
+learning techniques to build such a model in this area. The techniques
+applied in this project are standard machine learning methods.
+
+
+Technical quality
+The techniques applied are standard and sound. A primary concern is
+the number and variety of features used. When making such decisions in
+real life, people tend to consider plenty of aspects and some of them
+come with great randomness. Whether this problem can be well addressed
+can affect the performance of the model significantly.
+
+
+Significance
+Since most of the techniques used in the project are standard
+techniques, the contribution to machine learning community is limited.
+However, due to the novelty of the topic, the contribution in the
+related application field can be considerable.
+Some additional work that can improve the quality of this project a
+lot would be to interpret the result and draw convincing/reasonable
+conclusions on what makes a good couple a good couple, e.g. similarity
+or dissimilarity in opinions, education, background, etc.? So, please
+try to come up with some explanation and interpretation based on your
+learned model.
+
+What happens if you combine “subjective features” and “automatically
+selected features”?
+
+Exploration with various feature selection methods sounds like a
+reasonable plan. Please be careful in handling categorical variables
+(1-hot encoding) since most feature selection won’t take this into
+consideration.
+
+
+Presentations
+It looks like some good amount of work has been done.
+Presentation-wise the report is well formatted. However it will be
+good to compare your model’s performance with other baseline models.
+As you implement more advanced methods/ideas, your current methods can
+be used as baseline.
+
+Please use some standard way of reference.
+
+“using personal intuition and academic research”
+->
+cite papers for the academic research
+
+Use different font size and formatting for sub-section and
+sub-subsection (e.g., 2.3 vs 2.3.1).
+
+
+Additional comments/suggestions to authors.
+It may not be very necessary to match the ratio of numbers of
+instances in different classes. Alternatively, you can try weight for
+positive or negative examples. Also, you can evaluate with area under
+ROC or precision-recall curve, which will alleviate the problem of
+imbalanced labels.
+
+In the chart, FP, TP, FN TN are better to be integer values. It’s more
+standard to show this in 2x2 table. Alternatively, report precision,
+recall, false-positive ratio, etc., instead of dividing TP with the
+total number of examples.
+
+
+Overall score: 8.4
