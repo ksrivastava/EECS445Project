@@ -98,7 +98,6 @@ def main():
         'PPHHHEAD',
         'PPMSACAT',
         'PPNET',
-        'Q24_MET_ONLINE',
         'Q31_1', #refused is -1
         'Q31_2', #refused is -1
         'Q31_3', #refused is -1
@@ -107,7 +106,6 @@ def main():
         'Q31_6', #refused is -1
         'Q31_7', #refused is -1
         'Q31_8', #refused is -1
-        'Q32_INTERNET',
         'SAME_SEX_COUPLE',
         'US_RAISED',
         'ZPRURAL_CAT',
@@ -272,7 +270,10 @@ def main():
     concatenated_final = np.column_stack((concatenated_final, suc_data))
     concatenated_final_no_one_hot = np.column_stack((concatenated_without_one_hot, suc_data))
 
+    print type(header_names)
+
     np.savetxt('../data/preprocessed_with_one_hot.tsv', concatenated_final, delimiter='\t', header = header_names)
     np.savetxt('../data/preprocessed_no_one_hot.tsv', concatenated_final_no_one_hot, delimiter='\t', header = non_one_hot_header_names)
+
 if __name__ == '__main__':
     main()

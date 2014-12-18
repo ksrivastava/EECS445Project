@@ -11,21 +11,25 @@ from sklearn.feature_selection import RFE
 from sklearn.grid_search import GridSearchCV
 from sklearn.svm import LinearSVC
 
-from pybrain.tools.shortcuts import buildNetwork
-from pybrain.datasets import ClassificationDataSet
-from pybrain.supervised.trainers import BackpropTrainer
-from pybrain.structure import TanhLayer
+# from pybrain.tools.shortcuts import buildNetwork
+# from pybrain.datasets import ClassificationDataSet
+# from pybrain.supervised.trainers import BackpropTrainer
+# from pybrain.structure import TanhLayer
 
-from pybrain.datasets            import ClassificationDataSet
-from pybrain.utilities           import percentError
-from pybrain.tools.shortcuts     import buildNetwork
-from pybrain.supervised.trainers import BackpropTrainer
-from pybrain.structure.modules   import SoftmaxLayer
+# from pybrain.datasets            import ClassificationDataSet
+# from pybrain.utilities           import percentError
+# from pybrain.tools.shortcuts     import buildNetwork
+# from pybrain.supervised.trainers import BackpropTrainer
+# from pybrain.structure.modules   import SoftmaxLayer
 
-from pylab import ion, ioff, figure, draw, contourf, clf, show, hold, plot
-from scipy import diag, arange, meshgrid, where
-from numpy.random import multivariate_normal
-import pybrain.tools.validation
+# from pylab import ion, ioff, figure, draw, contourf, clf, show, hold, plot
+# from scipy import diag, arange, meshgrid, where
+# from numpy.random import multivariate_normal
+# import pybrain.tools.validation
+
+from sklearn import tree
+
+from sklearn import linear_model
 
 def confusion_matrix(pred, actual):
     mat = {'TP' : 0, 'FP' : 0, 'TN' : 0, 'FN' : 0}
@@ -42,14 +46,15 @@ def confusion_matrix(pred, actual):
                 mat['FN'] += 1
 
     for k, v in mat.items():
-        mat[k] = (v / float(len(actual))) * 100
+        # mat[k] = (v / float(len(actual))) * 100
+        mat[k] = v
 
     return mat
 
 data = np.genfromtxt('preprocessed.tsv', delimiter='\t')
 
-targets = data[:, 140]
-features = data[:, :140]
+targets = data[:, 138]
+features = data[:, :138]
 
 print targets
 print features
@@ -76,79 +81,92 @@ yTest = targets[training_set_size:]
 print features.shape
 
 
-# ds = SupervisedDataSet(140,1)
-ds = ClassificationDataSet(140, nb_classes=2, class_labels=['Success','Fail'])
+# # ds = SupervisedDataSet(140,1)
+# ds = ClassificationDataSet(140, nb_classes=2, class_labels=['Success','Fail'])
 
-a = 0
-# print xTrain[1]
-for i in range(targets.shape[0]):
-	if targets[i] == -1:
-		a +=1
-		ds.addSample(features[i],0)
-	else:
-		ds.addSample(features[i], targets[i])
+# a = 0
+# # print xTrain[1]
+# for i in range(targets.shape[0]):
+# 	if targets[i] == -1:
+# 		a +=1
+# 		ds.addSample(features[i],0)
+# 	else:
+# 		ds.addSample(features[i], targets[i])
 
-trndata, tstdata = ds.splitWithProportion( 0.7 )
+# trndata, tstdata = ds.splitWithProportion( 0.7 )
 
-trndata._convertToOneOfMany( )
-tstdata._convertToOneOfMany( )
+# trndata._convertToOneOfMany( )
+# tstdata._convertToOneOfMany( )
 
-print 'num of conv' + str(a)
-print str(len(ds))
-# for inpt, target in ds:
-# 	print inpt, target
+# print 'num of conv' + str(a)
+# print str(len(ds))
+# # for inpt, target in ds:
+# # 	print inpt, target
 
-print "Number of training patterns: ", len(trndata)
-print "Input and output dimensions: ", trndata.indim, trndata.outdim
-print "First sample (input, target, class):"
-print trndata['input'][0], trndata['target'][0], trndata['class'][0]
+# print "Number of training patterns: ", len(trndata)
+# print "Input and output dimensions: ", trndata.indim, trndata.outdim
+# print "First sample (input, target, class):"
+# print trndata['input'][0], trndata['target'][0], trndata['class'][0]
 
-fnn = buildNetwork(trndata.indim,50,trndata.outdim, bias=True, hiddenclass=SoftmaxLayer)
-trainer = BackpropTrainer(fnn, dataset=trndata)
+# fnn = buildNetwork(trndata.indim,50,trndata.outdim, bias=True, hiddenclass=SoftmaxLayer)
+# trainer = BackpropTrainer(fnn, dataset=trndata)
 
-for i in range(10):
-	print trainer.train()
+# for i in range(100):
+# 	print trainer.train()
 
-trnresult = percentError( trainer.testOnClassData(),
-                         trndata['class'] )
-tstresult = percentError( trainer.testOnClassData(
-       dataset=tstdata ), tstdata['class'] )
+# trnresult = percentError( trainer.testOnClassData(),
+#                          trndata['class'] )
+# tstresult = percentError( trainer.testOnClassData(
+#        dataset=tstdata ), tstdata['class'] )
 
-print "epoch: %4d" % trainer.totalepochs, \
-      "  train error: %5.2f%%" % trnresult, \
-      "  test error: %5.2f%%" % tstresult
+# print "epoch: %4d" % trainer.totalepochs, \
+#       "  train error: %5.2f%%" % trnresult, \
+#       "  test error: %5.2f%%" % tstresult
 
 # Feature selection: Univariate
 
 
-# gnb = GaussianNB()
+gnb = GaussianNB()
+# , 'C':[0.001, 1, 100]
+parameters = {'kernel':('linear', 'rbf'), 'gamma': [0.001, 0.0001], 'class_weight': ['auto']}
+svr = svm.SVC()
+clf = GridSearchCV(estimator=svr, param_grid=parameters, cv=5)
 
-# parameters = {'kernel':('linear', 'rbf'), 'C':[0.001, 1, 100], 'gamma': [0.001, 0.0001]}
-# svr = svm.SVC()
-# clf = GridSearchCV(estimator=svr, param_grid=parameters, cv=2)
+parameters = {'n_neighbors':[4, 12, 20], 'algorithm':('auto', 'ball_tree', 'kd_tree', 'brute')}
+kvr = KNeighborsClassifier()
+knn = GridSearchCV(estimator=kvr, param_grid=parameters)
 
-# parameters = {'n_neighbors':[4, 12, 20], 'algorithm':('auto', 'ball_tree', 'kd_tree', 'brute')}
-# kvr = KNeighborsClassifier()
-# knn = GridSearchCV(estimator=kvr, param_grid=parameters)
+dtc = tree.DecisionTreeClassifier()
 
 
-# for i in range(25,26):
+rc = linear_model.RidgeClassifier()
+sgdclas = linear_model.SGDClassifier()
 
+sel = SelectKBest(chi2, k=10)
+Train_feat = sel.fit_transform(abs(xTrain), yTrain)
+Test_feat = sel.transform(xTest)
+# Train_feat = xTrain
+# Test_feat = xTest
 
-#     sel = SelectKBest(chi2, k=i)
-#     Train_feat = sel.fit_transform(abs(xTrain), yTrain)
-#     Test_feat = sel.transform(xTest)
+features_scores = sel.scores_
 
-# features_scores = sel.scores_
+b = dict()
 
-# print features_scores
-# print features_scores.max()
-# print features_scores.argmax()
+for idx, item in enumerate(features_scores, start=1):
+    b[idx] = item
+    
+for key, value in sorted(b.iteritems(), key=lambda (k,v): (v,k), reverse=True):
+    print "%s: %s" % (key, value)
+
+# print sel.scores_
+# print sel.get_support()
+# print sel.scores_.max()
+# print sel.scores_.argmax()
 # print type(features_scores)
 
-#np.savetxt('out.tsv',features_scores.transpose(), delimiter='\t')
+# np.savetxt('out.tsv',features_scores.transpose(), delimiter='\t')
 
-# xTrain = LinearSVC(C=1, penalty="l1", dual=False).fit_transform(xTrain,yTrain);
+xTrain = LinearSVC(C=1, penalty="l1", dual=False).fit_transform(xTrain,yTrain);
 
 # print xTrain
 # print xTrain.shape
@@ -168,36 +186,65 @@ print "epoch: %4d" % trainer.totalepochs, \
 #          print idx
 
 # print selector.ranking_
-# # Training
+# Training
 
 
-    # gnb.fit(Train_feat, yTrain)
-    # clf.fit(Train_feat, yTrain)
-    # knn.fit(Train_feat, yTrain)
+gnb.fit(Train_feat, yTrain)
+clf.fit(Train_feat, yTrain)
+knn.fit(Train_feat, yTrain)
+
+dtc.fit(Train_feat, yTrain)
+
+rc.fit(Train_feat, yTrain)
+
+sgdclas.fit(Train_feat, yTrain)
+# print 'num features' + str(i)
+
+# Testing
+print "Naive Bayes:"
+print "\tTraining accuracy: " + str(gnb.score(Train_feat, yTrain) * 100)
+print "\tTesting accuracy: " + str(gnb.score(Test_feat, yTest) * 100)
+print confusion_matrix(gnb.predict(Test_feat), yTest)
+print "\n"
 
 
 
-    # print 'num features' + str(i)
+print "Support Vector Classification:"
+print clf.best_params_
+print clf.grid_scores_
+print "\tTraining accuracy: " + str(clf.score(Train_feat, yTrain) * 100)
+print "\tTesting accuracy: " + str(clf.score(Test_feat, yTest) * 100)
+print confusion_matrix(clf.predict(Test_feat), yTest)
+print "\n"
+print clf.best_estimator_.coef_
 
-    # # Testing
-    # # print "Naive Bayes:"
-    # # print "\tTraining accuracy: " + str(gnb.score(Train_feat, yTrain) * 100)
-    # # print "\tTesting accuracy: " + str(gnb.score(Test_feat, yTest) * 100)
-    # # print confusion_matrix(gnb.predict(Test_feat), yTest)
-    # # print "\n"
+print "Nearest Neighbors:"
+print knn.best_params_
+print "\tTraining accuracy: " + str(knn.score(Train_feat, yTrain) * 100)
+print "\tTesting accuracy: " + str(knn.score(Test_feat, yTest) * 100)
+print confusion_matrix(knn.predict(Test_feat), yTest)
+print "\n"
 
-    # print "Support Vector Classification:"
-    # print clf.best_params_
-    # print clf.grid_scores_
-    # print "\tTraining accuracy: " + str(clf.score(Train_feat, yTrain) * 100)
-    # print "\tTesting accuracy: " + str(clf.score(Test_feat, yTest) * 100)
-    # print confusion_matrix(clf.predict(Test_feat), yTest)
-    # print "\n"
+print "Decision Tree Classifier:"
+# print dtc.best_params_
+# print dtc.grid_scores_
+print "\tTraining accuracy: " + str(dtc.score(Train_feat, yTrain) * 100)
+print "\tTesting accuracy: " + str(dtc.score(Test_feat, yTest) * 100)
+print confusion_matrix(dtc.predict(Test_feat), yTest)
+print "\n"
 
-    # # print "Nearest Neighbors:"
-    # # print knn.best_params_
-    # # print "\tTraining accuracy: " + str(knn.score(Train_feat, yTrain) * 100)
-    # # print "\tTesting accuracy: " + str(knn.score(Test_feat, yTest) * 100)
-    # # print confusion_matrix(knn.predict(Test_feat), yTest)
-    # # print "\n"
+print "Ridge Classifier:"
+# print dtc.best_params_
+# print dtc.grid_scores_
+print "\tTraining accuracy: " + str(rc.score(Train_feat, yTrain) * 100)
+print "\tTesting accuracy: " + str(rc.score(Test_feat, yTest) * 100)
+print confusion_matrix(rc.predict(Test_feat), yTest)
+print "\n"
 
+print "sgd Classifier:"
+# print dtc.best_params_
+# print dtc.grid_scores_
+print "\tTraining accuracy: " + str(sgdclas.score(Train_feat, yTrain) * 100)
+print "\tTesting accuracy: " + str(sgdclas.score(Test_feat, yTest) * 100)
+print confusion_matrix(sgdclas.predict(Test_feat), yTest)
+print "\n"
