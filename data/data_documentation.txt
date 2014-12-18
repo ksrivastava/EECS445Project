@@ -90,6 +90,8 @@ Manually Selected Features with no repetitive information:
 
 Data Set List:
 
+    1.Labelled Raw dataset: classify_suc_or_not.tsv (missing values filled, without any recoding:1873 by 458)
+
 	1.all_features_manually_preprocessed_labeled.tsv (missing values and refused answers recorded as NaN, pos: 1423, neg: 450, total 1873)
 	2.all_features_manually_preprocessed_unlabeled.tsv (missing values and refused answers recorded as NaN, total, 4002)
 	3.all_features_manually_preprocessed_unlabeled_dropRef.tsv (dropped refused answers, 3991)
