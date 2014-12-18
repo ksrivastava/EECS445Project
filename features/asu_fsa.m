@@ -4,14 +4,17 @@ load('../data/SK_manual_kepCatRef_labelled.mat')
 
 Y = ((Y==1) + 1);
 
-[out] = fsSBMLR(X, Y);
+[out] = fsTtest(X, Y);
 out.fList
 
-fileID = fopen('../features/fsSBMLR_features_idx.txt','w');
-fprintf(fileID,'Algorithm:fsSBMLR\n');
+fileID = fopen('../features/features_data/fsTtest_features_idx.txt','w');
+fprintf(fileID,'Algorithm:fsTtest\n');
 fprintf(fileID,'DataFile:SK_manual_kepCatRef_labelled\n');
+
+
+
 for i = 1:size(out.fList,1),
-    fprintf(fileID,'%d\t',out.fList(i));
+    fprintf(fileID,'%d\t',out.fList(i) - 1);
 end
 fprintf('\n');
 fclose(fileID);

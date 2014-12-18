@@ -13,6 +13,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.grid_search import GridSearchCV
 from scipy import interp
 
+
+
 data = np.genfromtxt('../data/subj_combo_breakup.tsv', skip_header=True, delimiter='\t')
 data = data[~np.isnan(data).any(1)]
 
@@ -28,7 +30,6 @@ x = data[:,1:]
 ratio = (1 - sum(y)/len(y))
 
 y = 2 * y - 1
-
 testing_scores = 0
 training_scores = 0
 
@@ -86,6 +87,7 @@ probas[0]  =  nb.fit(x_train, y_train).predict_proba(x_test)
 probas[1]  =  svr.fit(x_train, y_train).predict_proba(x_test)
 probas[2]  =  kvr.fit(x_train, y_train).predict_proba(x_test)
 
+print probas[0]
 mean_tpr = 0.0
 mean_fpr = np.linspace(0, 1, 100)
 
