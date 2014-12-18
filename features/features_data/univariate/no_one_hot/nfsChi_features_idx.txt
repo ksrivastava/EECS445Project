@@ -1,0 +1,3 @@
+Algorithm:fsChi
+DataFile:data_without_one_hot.mat
+36	

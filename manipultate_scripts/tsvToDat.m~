@@ -1,0 +1,25 @@
+xtrain_f = '../data/x_train_one_hot.tsv';
+ytrain_f = '../data/y_train_one_hot.tsv';
+xtest_f = '../data/x_train_one_hot.tsv';
+ytest_f = '../data/x_train_one_hot.tsv';
+
+delimiterIn = '\t';
+x_train = importdata(xtrain_f,delimiterIn);
+y_train = importdata(ytrain_f,delimiterIn);
+x_test = importdata(xtest_f,delimiterIn);
+y_test = importdata(ytest_f,delimiterIn);
+
+save('../data/matlab/one_hot_data.mat','x_train','y_train','x_test','y_test');
+
+xtrain_f = '../data/x_train_one_hot.tsv';
+ytrain_f = '../data/y_train_one_hot.tsv';
+xtest_f = '../data/x_train_one_hot.tsv';
+ytest_f = '../data/x_train_one_hot.tsv';
+
+delimiterIn = '\t';
+x_train = importdata(xtrain_f,delimiterIn);
+y_train = importdata(ytrain_f,delimiterIn);
+x_test = importdata(xtest_f,delimiterIn);
+y_test = importdata(ytest_f,delimiterIn);
+
+save('../data/matlab/one_hot_data.mat','x_train','y_train','x_test','y_test');
