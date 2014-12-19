@@ -5,9 +5,11 @@ ny_train = ((ny_train==1) + 1);
 fileID = fopen('../../features_data/univariate/no_one_hot/nfsChi_features_idx.txt','w');
 fprintf(fileID,'Algorithm:fsChi\n');
 fprintf(fileID,'DataFile:data_without_one_hot.mat\n');
+
 for i = 1:size(out.fList,1),
     fprintf(fileID,'%d\t',out.fList(i) - 1);
 end
+
 size(out.fList)
 fprintf('\n');
 fclose(fileID);
