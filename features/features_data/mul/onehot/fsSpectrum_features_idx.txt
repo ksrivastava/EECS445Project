@@ -1,0 +1,2 @@
+Algorithm:fsSpectrum
+DataFile:one_hot_data.mat
