@@ -1,0 +1,181 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{fullpage}
+\usepackage{nips13submit_e,times}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{subcaption}
+
+
+\title{Identification of Promising Couples using Machine Learning}
+
+
+
+\author{
+Matt Kliemann \\
+\texttt{mtkliema@umich.edu.edu} \\
+\And
+Chris Labiak \\
+\texttt{clabiak} \\
+\AND
+Yao Liu \\
+\texttt{liuyaoly} \\
+\And
+Kaustubh Srivastava \\
+\texttt{kaustubh} \\
+\And
+Yao Xiao \\
+\texttt{xyaoinum} \\
+}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\nipsfinalcopy % Uncomment for camera-ready version
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+Divorces, or more generally, failed relationships, are tremendous social issues that not only affect the two people involved, but also friends and family. In this project, we try to address this social issue by finding out what features are indicative of an unpromising relationship and use these features to predict the outcome of a romantic relationship over a 4 year time frame. The existing social science research is mostly based on simple statistical models. Our project aims to address this issue by applying machine learning algorithms. Specifically, using a variety of feature selection and classification methods, we have been able to achieve predictions with accuracy in the low eighty percent range and discovered several new important factors that affect a relationship’s outcome, such as meeting on the internet having a negative impact.
+\end{abstract}
+
+\section{Introduction}
+
+
+\subsection{Motivation}
+
+This project aims to predict whether or not a couple (either married or in a romantic relationship) will break in the next four years. We also aim to identify the features that are most indicative of a breakup. \par
+The motivation of pursuing this project is to tackle the widespread social issue of failed relationships. According to current social studies, divorce rates have doubled over the past two decades among persons over age 35. In addition, younger couples have become increasingly more critical about choosing their significant other, resulting in a low marriage rate among younger people which can have significant socioeconomic consequences \cite{kennedy2014breaking}. As a result, the identification of important factors predicting a long lasting relationship  is an important task. \par
+By solving this problem, we can get great insight into what the most significant features are that make a couple stay together for a long period of time. These features could then be used by individuals as guidelines when looking for a partner to increase the chances of being successful couples. As a result, this study may help alleviate increasing divorce rate issues and make it easier for people to find their most compatible partner. \par
+
+\subsection{Challenges}
+The dataset is from the survey “How Couples Meet and Stay Together” \cite{rosenfeld2011and}. This collection consists of the initial survey given in 2009 and three follow up surveys in 2010, 2011, and 2013 (referred to as wave 2, 3, 4), respectively. \par
+The initial survey is terminated early if the respondent is not in an active relationship - therefore our baseline is respondents who were in a relationship during the initial survey. The follow up surveys were also no longer conducted  if a respondent broke up or got divorced in the prior survey.\par
+We classify a respondent's relationship outcome as positive if they indicated they divorced or ended the relationship during one of the follow up surveys. If they responded that they were still in the same relationship during the 4th wave, we consider the respondent relationship to be a negative example. \par
+We have 1874 examples,  450 of which are positive examples (failed relationships). This limited size of data set makes it hard to train predictive models. In addition, among the dataset, the ratio between positive and negative examples is imbalanced (1:4 ratio). A limited number of failed relationship examples makes it hard to discover important factors that caused break-up in the relationship.\par
+Furthermore, to investigate the social issues on same-sex couples, the survey recruits more same-sex couples intentionally. However, the number of same-sex couples samples is not enough for us to train models to learn the different behaviors in relationships for two types of couples \cite{weisshaar2014earnings}. \par
+
+
+\section{Method}
+\includegraphics[width=\textwidth]{pipeline.png}
+\subsection{Assumptions}
+We do not consider the length of time that couples been together prior to the the start of the study aside from as a feature. Our model considers the 4 year outlook at any point of time in the relationship.
+We do not currently consider the weighting information provided by the survey firm to account for oversampling of parts of the population in the survey. For example, approximately 15\% of respondents were same-sex couples while this is closer to 2\% in the US general population.
+We do not consider the variables that may evolve after wave 1 such as income and education levels because followup surveys are not conducted once a couple has broken up.
+We assume the respondent’s answers to be unbiased and reflect the true nature/ reality of their relationship (brought about by culture difference) \cite{thomas2011americans}
+
+\subsection{Feature Preprocessing}
+The dataset requires some significant preprocessing in order to train easier and more understandable models. Besides pre-existing binary data, are two major types of data included in this dataset which special preprocessing: continuous and categorical. 
+
+\subsubsection{Categorical Features}
+Many of the features are in categorical form. For example, the feature indicating race holds values: 1 for Caucasian, 2 for Black, 3 for Hispanic, 4 for Asian, and 5 for other races. This sort of representation lacks an ordering to the categories and would distort interclass distances. First, the missing data is imputed using the most frequent value of existing data for that feature. Most frequent value is used since other basic approaches like median or mean aren’t built for categorical data. Next, the categorical features are transformed into binary values through the one-hot encoding (one-of-K encoding) method provide by Scikit Learn. This method transforms a categorical feature with [M] possible values into [M] binary features where only one is true. 
+
+\subsubsection{Continuous Features}
+For continuous features, we rectify missing values using median value imputation based on the median of values present for that feature. We also do feature standardization on continuous features by scaling them with zero mean and unit variance. This enables us to use different models such as SVM with gaussian kernel.
+After this process, we have 138 features to utilize. The entire feature set will serve as the baseline.
+
+\subsection{Feature Selection}
+One of the major challenges in our project is that we have a large number of features compared to our small sample size. To address this issue, we propose two feature selection methods. The first method is to select features based on subjective evaluation from relevant social science academic research. The other method is to apply and evaluate various feature selection algorithms.\cite{iavindrasana2009clinical}.
+
+\subsubsection{Subjective Feature Selection}
+There have been several social studies working on the same data set \cite{weisshaar2014earnings}\cite{rosenfeld2012searching} \cite{thomas2011americans}. We incorporate features from conclusions and statistical analysis process of these studies as subjective features.  \par
+The features we selected are household income \cite{weisshaar2014earnings},  same sex couples \cite{weisshaar2014earnings}, existing divorce \cite{kennedy2014breaking} , cohabitating couple \cite{thomas2011americans}, years of education \cite{thomas2011americans}, met through friends \cite{thomas2011americans}, met at school \cite{thomas2011americans}, met at church \cite{thomas2011americans} and met through internet \cite{rosenfeld2012searching}.
+
+\subsubsection{Algorithmic Feature Selection}
+%Our baseline is training the dataset with all the features. \par
+%Because of the one-hot encoding preprocessing in nominal variables, features selected by univariate features selection algorithms are easier to interpret.  Fisher score and t-test algorithms work for numerical variables. The rich categorical data can have special calculation? in chi-squared and information gain scores algorithms. \par
+%
+%The overlapping information and correlation across variables make it necessary to introduce multivariate feature selection algorithms. Filter method fast correlation-based filter feature selection is introduced to search best features subset for the prediction models. To avoid overfitting issues caused by filter method, wrapper algorithm, correlation-based feature selection, is also considered. In addition, embedded models based on L1-penalty (including  L1-SVM with linear kernel, L1-logistic-regression, L1-multinomial logistic regression via bayesian, and recursive feature elimination evaluated using linear SVM) are experimented to enforce sparsity to help discover useful features.\cite{iavindrasana2009clinical} \cite{guyon2003introduction} \cite{scikit-learn} \cite{zhao2010advancing}
+
+We do univariate feature selection using chi-squared score. The top 20 features based on score are selected. \cite{scikit-learn}
+We do multivariate feature selection using a variety of algorithms. We use filter methods such as fisher score based feature selection, correlation-based feature selection.  fast correlation-based filter feature selection. \cite{zhao2010advancing}
+We also use embedded methods such as L1-SVM with linear kernel feature selection and L1-logistic regression feature selection. L1 regularization enforces sparsity which causes only a few features to be selected. \cite{scikit-learn} \cite{iavindrasana2009clinical} Another embedded method used is recursive feature elimination (evaluated using linear SVM) \cite{scikit-learn}
+
+\subsection{Model Training}
+After feature selection, the dataset was classified by the following supervised learning classifiers: Gaussian naive Bayes, Support Vector Machine with linear kernel, k-Nearest Neighbors, Decision Tree, Ridge Regression, L1 Regularized Logistic Regression, and Adaboost using decision tree. Each classifier model was trained using 5-fold cross validation and is evaluated using a 70-30 training-testing split to avoid overfitting issues. 
+
+\subsection{Model Evaluation}
+\begin{enumerate}
+  \item Overall Accuracy
+  \item Precision and Recall
+  \item Area Under ROC Curve (AUC)\\
+\end{enumerate}
+
+\section{Related Works}
+One category of related work is social science work. We refer to the statistical prediction process and conclusion of these works as our first subjective method of features selection \cite{weisshaar2014earnings}\cite{rosenfeld2012searching} \cite{thomas2011americans} . These works are based on social science, so they only do simple regression and test the statistical significance, which may induce overfitting problems.  In our case, we combine knowledge from these research work and train the models through machine learning algorithms.\par
+
+Gottman is the expert in marriage outcome research. He was able to construct a short term (7 year) divorce prediction model for married couples which is 93\% accurate. \cite{gottman2000timing} His model primary uses features about marital interaction and emotion. He found that negative affect during marital conflict most predicted breakup. Our model differs in that the feature set we use primarily consists of demographic data. In addition, we predict the outcome of a relationship in general, not only married couples. Finally, we do extensive cross validation on our dataset, which is not typically done in research about relationship outcomes. \cite{heyman2001hazards}\par
+
+The second category of related work we consider are clinical machine learning problems because of the similar issues such as unbalanced dataset, no clear boundary, large number of features and factor analysis issues etc. We refer to this work on feature selection and evaluation methods \cite{iavindrasana2009clinical}.\par
+
+\section{Experimental Results}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{manual.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{fisher.png}
+\end{subfigure}
+A machine learning feature selection approach will provide better classification power than subjectively selecting features, as is conventionally done in social science research. In addition, the features selected by machine learning algorithms have significantly increased the power to correctly classify positive examples (higher AUC). This is important to identify the most contributing factors in an unsuccessful relationship. \par
+
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=\textwidth]{fs_vs_model.jpeg}
+Results over selected feature selection algorithms and different classifiers have been listed above. Most models have 
+achieved classification accuracy in the low 80\% range. SVM model with features selected by fisher scores provides the best combination of accuracy, recall, and precision results. 
+ \end{figure}
+ 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.6\textwidth]{weights.jpeg}\\
+Using features obtained from the Fisher test and trained on a linear SVM classifier, we obtained the weights each feature is allocated in the model. Some features with very low weights have not been shown.\par
+
+
+ \end{figure}
+
+
+The most predictive feature of a relationship success turned out to be a high relationship quality (1). Another very predictive feature of relationship success include living together (2) for a long time (4), which confirms with the social science work \cite{thomas2011americans}.\par
+We can also confirm that the longer a couple is in a relationship, they are less likely to breakup \cite{thomas2011americans}. Specifically, features 6, 10, 11, 12, 15.  The only downside is meeting at an older age (16), which has a negative weight. This is likely related to being divorced (9), as divorced people who are “back on the market” at an older age do not find success.\par
+Other features that reflect positively on a couple’s outcome include positive parental approval (14), high household income (8).\par
+Meeting on the internet turns out surprisingly to reflect negatively on relationship success (17), which is indicated as an increasing intermediary to look for partners in recent years in social science work \cite{rosenfeld2012searching}.\par
+Finally, if the respondent is paying for their home in some manner (3,5), that has a positive impact on their chance for increasing relationship success, as compared to someone who lives for free.\par
+
+
+\section{Conclusion}
+
+From the experiment results above, the introduction of machine learning algorithms to this problem allowed us to  calculate a four year relationship success rate with approximately 82\% accuracy primarily with demographic information. Moreover, it helps discover new important factors such as negative impact of meeting couple through internet and how a divorced person has a reduced chance of having a new successful relationship. \par 
+
+
+
+Even though the data set itself only has few subjective and emotional evaluation of the relationship from the survey respondent, the self described relationship quality has been listed as most important factor, than other demographic statistics, by the best performance training model (SVM with top 20 features selected based on fisher scores). This also confirms the important role of emotional factors that play in a romantic relationship, which is revealed by Gottman’s work \cite{gottman2000timing}. \par
+
+Based on the comparison between social science work and our approach, various changes can be done in the future to help better understand this social problem. The first aspect of future work may focus on decreasing the bias of our study by referring to social science methodology, such as using multiple imputation through SVD to fill in missing values \cite{howell2007treatment}, taking into account of weighting information \cite{winship1994sampling} and considering evolving values during the period with event history models \cite{weisshaar2014earnings}. Another aspect of future work can focus on constructing new features based on social science domain knowledge on this problem, such as difference in race. Lastly, our work doesn’t solely consider married couples or dating couples as is conventionally done by social science researchers. We considered both and our models tended to select marriage status as a useful feature and weight it highly. This informs us we should consider both instances separately - evaluating success prior to marriage and during marriage individually.\par
+
+
+\bibliographystyle{apalike}
+\bibliography{FinalReport} 
+
+
+\end{document}
+
+

@@ -1,0 +1,76 @@
+\begin{thebibliography}{}
+
+\bibitem[Gottman and Levenson, 2000]{gottman2000timing}
+Gottman, J.~M. and Levenson, R.~W. (2000).
+\newblock The timing of divorce: Predicting when a couple will divorce over a
+  14-year period.
+\newblock {\em Journal of Marriage and Family}, 62(3):737--745.
+
+\bibitem[Heyman and Slep, 2001]{heyman2001hazards}
+Heyman, R.~E. and Slep, A. M.~S. (2001).
+\newblock The hazards of predicting divorce without crossvalidation.
+\newblock {\em Journal of Marriage and Family}, 63(2):473--479.
+
+\bibitem[Howell, 2007]{howell2007treatment}
+Howell, D.~C. (2007).
+\newblock The treatment of missing data.
+\newblock {\em The Sage handbook of social science methodology}, pages
+  208--224.
+
+\bibitem[Iavindrasana et~al., 2009]{iavindrasana2009clinical}
+Iavindrasana, J., Cohen, G., Depeursinge, A., M{\"u}ller, H., Meyer, R., and
+  Geissbuhler, A. (2009).
+\newblock Clinical data mining: a review.
+\newblock {\em Yearb Med Inform}, 2009:121--133.
+
+\bibitem[Kennedy and Ruggles, 2014]{kennedy2014breaking}
+Kennedy, S. and Ruggles, S. (2014).
+\newblock Breaking up is hard to count: The rise of divorce in the united
+  states, 1980--2010.
+\newblock {\em Demography}, 51(2):587--598.
+
+\bibitem[Pedregosa et~al., 2011]{scikit-learn}
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,
+  O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J.,
+  Passos, A., Cournapeau, D., Brucher, M., Perrot, M., and Duchesnay, E.
+  (2011).
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830.
+
+\bibitem[Rosenfeld and Thomas, 2012]{rosenfeld2012searching}
+Rosenfeld, M.~J. and Thomas, R.~J. (2012).
+\newblock Searching for a mate the rise of the internet as a social
+  intermediary.
+\newblock {\em American Sociological Review}, 77(4):523--547.
+
+\bibitem[Rosenfeld et~al., 2011]{rosenfeld2011and}
+Rosenfeld, M.~J., Thomas, R.~J., and Falcon, M. (2011).
+\newblock and 2014.“how couples meet and stay together.” waves 1, 2, and 3:
+  Public version 3.04, plus wave 4 supplement version 1.02 [computer files].
+
+\bibitem[Thomas, 2011]{thomas2011americans}
+Thomas, R.~J. (2011).
+\newblock How americans (mostly don't) find an interracial partner: Race and
+  ethnic differences in the use of social foci and networks for couple
+  formation.
+
+\bibitem[Weisshaar, 2014]{weisshaar2014earnings}
+Weisshaar, K. (2014).
+\newblock Earnings equality and relationship stability for same-sex and
+  heterosexual couples.
+\newblock {\em Social Forces}, 93(1):93--123.
+
+\bibitem[Winship and Radbill, 1994]{winship1994sampling}
+Winship, C. and Radbill, L. (1994).
+\newblock Sampling weights and regression analysis.
+\newblock {\em Sociological Methods \& Research}, 23(2):230--257.
+
+\bibitem[Zhao et~al., 2010]{zhao2010advancing}
+Zhao, Z., Morstatter, F., Sharma, S., Alelyani, S., Anand, A., and Liu, H.
+  (2010).
+\newblock Advancing feature selection research--asu feature selection
+  repository.
+\newblock {\em School of Computing, Informatics, and Decision Systems
+  Engineering, Arizona State University, Tempe}.
+
+\end{thebibliography}

@@ -1,0 +1,1673 @@
+rfe
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+[False False False False  True False False False  True False  True False
+ False False  True False False False False False False False False False
+ False False  True False  True False False False False False False False
+  True False False False False False False False False False False False
+ False False False  True False False False False False  True  True  True
+ False False False False False False False False  True  True  True False
+ False False False False  True  True  True False False False False  True
+  True False  True False False False False False False  True  True False
+  True  True False False  True False  True False  True False False False
+ False False False False  True False False False False False False  True
+ False False False False  True False False False False False False False
+ False False False False False False]
+[ 63  61  64  62   1  20  33  70   1  74   1   4 107  88   1  19  30  89
+  67   2 108  29  69  68  42  49   1  51   1  58  84  83  52  40  47  10
+   1  71 102  93  95  13  57  98  85  38  27   5  90  80  35   1  36  14
+  45  92  43   1   1   1 103  48  34  39  18  23  44  32   1   1   1 109
+  31 100  94 104   1   1   1   7  72  50  53   1   1  96   1  16  87  82
+   6  65  28   1   1  54   1   1  66   3   1  81   1  26   1  12  22  60
+  11  24  73   8   1  75  99  97  25  91  41   1  17  15  86  21   1 105
+  77  76  37  78  55  79  46   9  56 106  59 101]
+Rankings using Recursive Feature Elimination
+
+72: 109
+21: 108
+13: 107
+136: 106
+126: 105
+76: 104
+61: 103
+39: 102
+138: 101
+74: 100
+115: 99
+44: 98
+116: 97
+86: 96
+41: 95
+75: 94
+40: 93
+56: 92
+118: 91
+49: 90
+18: 89
+14: 88
+89: 87
+123: 86
+45: 85
+31: 84
+32: 83
+90: 82
+102: 81
+50: 80
+132: 79
+130: 78
+127: 77
+128: 76
+114: 75
+10: 74
+111: 73
+81: 72
+38: 71
+8: 70
+23: 69
+24: 68
+19: 67
+99: 66
+92: 65
+3: 64
+1: 63
+4: 62
+2: 61
+108: 60
+137: 59
+30: 58
+43: 57
+135: 56
+131: 55
+96: 54
+83: 53
+33: 52
+28: 51
+82: 50
+26: 49
+62: 48
+35: 47
+133: 46
+55: 45
+67: 44
+57: 43
+25: 42
+119: 41
+34: 40
+64: 39
+46: 38
+129: 37
+53: 36
+51: 35
+63: 34
+7: 33
+68: 32
+73: 31
+17: 30
+22: 29
+93: 28
+47: 27
+104: 26
+117: 25
+110: 24
+66: 23
+107: 22
+124: 21
+6: 20
+16: 19
+65: 18
+121: 17
+88: 16
+122: 15
+54: 14
+42: 13
+106: 12
+109: 11
+36: 10
+134: 9
+112: 8
+80: 7
+91: 6
+48: 5
+12: 4
+100: 3
+20: 2
+125: 1
+120: 1
+113: 1
+105: 1
+103: 1
+101: 1
+98: 1
+97: 1
+95: 1
+94: 1
+87: 1
+85: 1
+84: 1
+79: 1
+78: 1
+77: 1
+71: 1
+70: 1
+69: 1
+60: 1
+59: 1
+58: 1
+52: 1
+37: 1
+29: 1
+27: 1
+15: 1
+11: 1
+9: 1
+5: 1
+number of features selected 30
+[False False False False  True False False False  True False  True False
+ False False  True False False False False False False False False False
+ False False  True False  True False False False False False False False
+  True False False False False False False False False False False False
+ False False False  True False False False False False  True  True  True
+ False False False False False False False False  True  True  True False
+ False False False False  True  True  True False False False False  True
+  True False  True False False False False False False  True  True False
+  True  True False False  True False  True False  True False False False
+ False False False False  True False False False False False False  True
+ False False False False  True False False False False False False False
+ False False False False False False]
+4
+8
+10
+14
+26
+28
+36
+51
+57
+58
+59
+68
+69
+70
+76
+77
+78
+83
+84
+86
+93
+94
+96
+97
+100
+102
+104
+112
+119
+124
+[ 63  61  64  62   1  20  33  70   1  74   1   4 107  88   1  19  30  89
+  67   2 108  29  69  68  42  49   1  51   1  58  84  83  52  40  47  10
+   1  71 102  93  95  13  57  98  85  38  27   5  90  80  35   1  36  14
+  45  92  43   1   1   1 103  48  34  39  18  23  44  32   1   1   1 109
+  31 100  94 104   1   1   1   7  72  50  53   1   1  96   1  16  87  82
+   6  65  28   1   1  54   1   1  66   3   1  81   1  26   1  12  22  60
+  11  24  73   8   1  75  99  97  25  91  41   1  17  15  86  21   1 105
+  77  76  37  78  55  79  46   9  56 106  59 101]
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+Naive Bayes:
+	Training accuracy: 41.5713196034
+	Testing accuracy: 40.7473309609
+	Precision: 98.5507246377
+	Recall: 29.1220556745
+	True Negative: 97.8947368421
+{'FP': 2, 'TN': 93, 'FN': 331, 'TP': 136}
+
+
+Support Vector Classification:
+	Training accuracy: 85.6598016781
+	Testing accuracy: 81.4946619217
+	Precision: 78.2608695652
+	Recall: 59.3406593407
+	True Negative: 92.1052631579
+{'FP': 30, 'TN': 350, 'FN': 74, 'TP': 108}
+Nearest Neighbors:
+{'n_neighbors': 20, 'algorithm': 'auto'}
+	Training accuracy: 85.4309687262
+	Testing accuracy: 82.384341637
+	Precision: 54.347826087
+	Recall: 67.5675675676
+	True Negative: 86.0310421286
+{'FP': 63, 'TN': 388, 'FN': 36, 'TP': 75}
+
+
+Decision Tree Classifier:
+	Training accuracy: 100.0
+	Testing accuracy: 79.7153024911
+	Precision: 66.6666666667
+	Recall: 57.5
+	True Negative: 88.5572139303
+{'FP': 46, 'TN': 356, 'FN': 68, 'TP': 92}
+
+
+Ridge Classifier:
+	Training accuracy: 87.0327993898
+	Testing accuracy: 83.0960854093
+	Precision: 63.0434782609
+	Recall: 66.4122137405
+	True Negative: 88.1670533643
+{'FP': 51, 'TN': 380, 'FN': 44, 'TP': 87}
+
+
+log regress Classifier:
+	Training accuracy: 87.4904652937
+	Testing accuracy: 83.4519572954
+	Precision: 61.5942028986
+	Recall: 68.0
+	True Negative: 87.8718535469
+{'FP': 53, 'TN': 384, 'FN': 40, 'TP': 85}
+
+
+adaboost classifier:
+	Training accuracy: 89.7025171625
+	Testing accuracy: 80.0711743772
+	Precision: 57.2463768116
+	Recall: 59.8484848485
+	True Negative: 86.2790697674
+{'FP': 59, 'TN': 371, 'FN': 53, 'TP': 79}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  30 2
+First sample (input, target, class):
+0.0963727476419
+0.0763900902468
+0.0714216013492
+0.0689501463597
+0.0685934479527
+0.0695149923301
+0.0710692758815
+0.0717383104707
+0.0728318919799
+0.0737886401255
+0.0744380700527
+0.0755330263331
+0.075567108635
+0.0764875691917
+0.0764976162634
+0.0772630547517
+0.077381423847
+0.0772567085691
+0.0773401185412
+0.0773685641271
+0.0779620696775
+0.0777293448011
+0.077647376891
+0.0772340220392
+0.0774615832547
+epoch:   25   train error: 18.46%   test error: 21.17%
+
+l1 svm
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+coefficients from l1 linear svm selector
+[[  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   3.42268105e-02   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+   -8.61062061e-02   0.00000000e+00   2.41663357e-01   0.00000000e+00
+    1.86490201e-01   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    1.31616715e-02   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   4.44216283e-04   0.00000000e+00   5.30276989e-02
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   8.67011459e-03   2.45872681e-02   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    9.11833846e-02   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00  -4.35581443e-01   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+   -7.03139810e-01   0.00000000e+00  -1.14704193e-01   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   1.11311990e-02   0.00000000e+00
+    4.47242587e-02   5.54426417e-02   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00  -4.70789986e-02   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00
+    0.00000000e+00   5.16155356e-02   0.00000000e+00   0.00000000e+00
+    5.58982217e-02   2.44900752e-03   0.00000000e+00   0.00000000e+00
+    1.58247793e-02   0.00000000e+00]]
+(1, 138)
+<type 'numpy.ndarray'>
+27: 0.24166335692
+29: 0.18649020143
+69: 0.0911833845579
+133: 0.0558982216831
+110: 0.0554426417135
+44: 0.053027698867
+130: 0.0516155355759
+109: 0.0447242587438
+6: 0.0342268104785
+51: 0.0245872680881
+137: 0.0158247793488
+33: 0.0131616715101
+107: 0.0111311989825
+50: 0.00867011458539
+134: 0.00244900752229
+42: 0.000444216282614
+138: 0.0
+136: 0.0
+135: 0.0
+132: 0.0
+131: 0.0
+129: 0.0
+128: 0.0
+127: 0.0
+126: 0.0
+125: 0.0
+124: 0.0
+123: 0.0
+121: 0.0
+120: 0.0
+119: 0.0
+118: 0.0
+117: 0.0
+116: 0.0
+115: 0.0
+114: 0.0
+113: 0.0
+112: 0.0
+111: 0.0
+108: 0.0
+106: 0.0
+105: 0.0
+104: 0.0
+102: 0.0
+100: 0.0
+99: 0.0
+98: 0.0
+97: 0.0
+96: 0.0
+94: 0.0
+93: 0.0
+92: 0.0
+91: 0.0
+90: 0.0
+89: 0.0
+88: 0.0
+87: 0.0
+86: 0.0
+85: 0.0
+84: 0.0
+83: 0.0
+82: 0.0
+81: 0.0
+80: 0.0
+79: 0.0
+78: 0.0
+77: 0.0
+76: 0.0
+75: 0.0
+74: 0.0
+73: 0.0
+72: 0.0
+71: 0.0
+70: 0.0
+68: 0.0
+67: 0.0
+66: 0.0
+65: 0.0
+64: 0.0
+63: 0.0
+62: 0.0
+61: 0.0
+60: 0.0
+59: 0.0
+58: 0.0
+57: 0.0
+56: 0.0
+55: 0.0
+54: 0.0
+53: 0.0
+52: 0.0
+49: 0.0
+48: 0.0
+47: 0.0
+46: 0.0
+45: 0.0
+43: 0.0
+41: 0.0
+40: 0.0
+39: 0.0
+38: 0.0
+37: 0.0
+36: 0.0
+35: 0.0
+34: 0.0
+32: 0.0
+31: 0.0
+30: 0.0
+28: 0.0
+26: 0.0
+24: 0.0
+23: 0.0
+22: 0.0
+21: 0.0
+20: 0.0
+19: 0.0
+18: 0.0
+17: 0.0
+16: 0.0
+15: 0.0
+14: 0.0
+13: 0.0
+12: 0.0
+11: 0.0
+10: 0.0
+9: 0.0
+8: 0.0
+7: 0.0
+5: 0.0
+4: 0.0
+3: 0.0
+2: 0.0
+1: 0.0
+122: -0.0470789986469
+25: -0.0861062060999
+103: -0.114704192849
+95: -0.435581443491
+101: -0.703139809649
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+Naive Bayes:
+	Training accuracy: 82.8375286041
+	Testing accuracy: 81.6725978648
+	Precision: 81.884057971
+	Recall: 59.1623036649
+	True Negative: 93.2614555256
+{'FP': 25, 'TN': 346, 'FN': 78, 'TP': 113}
+
+
+Support Vector Classification:
+	Training accuracy: 84.7444698703
+	Testing accuracy: 81.1387900356
+	Precision: 76.0869565217
+	Recall: 58.9887640449
+	True Negative: 91.40625
+{'FP': 33, 'TN': 351, 'FN': 73, 'TP': 105}
+Nearest Neighbors:
+{'n_neighbors': 20, 'algorithm': 'ball_tree'}
+	Training accuracy: 85.6598016781
+	Testing accuracy: 80.6049822064
+	Precision: 46.3768115942
+	Recall: 64.6464646465
+	True Negative: 84.0172786177
+{'FP': 74, 'TN': 389, 'FN': 35, 'TP': 64}
+
+
+Decision Tree Classifier:
+	Training accuracy: 98.2456140351
+	Testing accuracy: 78.2918149466
+	Precision: 49.2753623188
+	Recall: 56.6666666667
+	True Negative: 84.1628959276
+{'FP': 70, 'TN': 372, 'FN': 52, 'TP': 68}
+
+
+Ridge Classifier:
+	Training accuracy: 86.1937452326
+	Testing accuracy: 83.0960854093
+	Precision: 61.5942028986
+	Recall: 66.9291338583
+	True Negative: 87.816091954
+{'FP': 53, 'TN': 382, 'FN': 42, 'TP': 85}
+
+
+log regress Classifier:
+	Training accuracy: 86.6514111365
+	Testing accuracy: 83.0960854093
+	Precision: 60.1449275362
+	Recall: 67.4796747967
+	True Negative: 87.4715261959
+{'FP': 55, 'TN': 384, 'FN': 40, 'TP': 83}
+
+
+adaboost classifier:
+	Training accuracy: 86.3463005339
+	Testing accuracy: 83.0960854093
+	Precision: 62.3188405797
+	Recall: 66.6666666667
+	True Negative: 87.9907621247
+{'FP': 52, 'TN': 381, 'FN': 43, 'TP': 86}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  21 2
+First sample (input, target, class):
+0.0987840372119
+0.0784301383446
+0.0752053850148
+0.0721859418046
+0.0697895192436
+0.0679845725448
+0.0664544836448
+0.0651043756587
+0.0636724450514
+0.0635278143184
+0.0628841763995
+0.062618792524
+0.0607271498296
+0.0609841143808
+0.0601096417818
+0.0601594822016
+0.0593304184519
+0.0589832187005
+0.0591124157999
+0.0579711478998
+0.057870406332
+0.058231033935
+0.0577509139709
+0.0580095451877
+0.0575535765953
+epoch:   25   train error: 14.49%   test error: 17.08%
+[Finished in 56.9s]
+
+l1 log
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+coefficients from l1 logisitic regression selector
+[[ 0.          0.          0.          0.          0.          0.04965398
+   0.          0.          0.          0.          0.          0.          0.
+   0.          0.          0.          0.          0.          0.          0.
+   0.          0.          0.          0.         -0.54194215  0.
+   0.5039443   0.          0.40345513  0.          0.          0.
+   0.0586008   0.          0.          0.          0.          0.          0.
+   0.          0.          0.          0.          0.16228849  0.          0.
+   0.          0.          0.          0.00850111  0.1323077   0.          0.
+   0.          0.          0.          0.          0.          0.          0.
+   0.          0.          0.          0.          0.          0.          0.
+   0.          0.19391505  0.          0.          0.          0.          0.
+   0.          0.          0.          0.          0.          0.          0.
+   0.          0.          0.          0.          0.          0.          0.
+   0.          0.          0.          0.          0.          0.
+  -1.17927132  0.          0.          0.          0.          0.
+  -1.61432726  0.         -0.40013536  0.          0.          0.
+   0.01220781  0.          0.21452319  0.1626962   0.          0.          0.
+   0.          0.          0.          0.          0.          0.          0.
+   0.         -0.07676229  0.          0.          0.          0.          0.
+   0.          0.          0.11689609  0.          0.          0.35027209
+   0.0045135   0.          0.          0.04582839  0.        ]]
+27: 0.503944302028
+29: 0.403455127469
+133: 0.350272088904
+109: 0.214523189578
+69: 0.193915053554
+110: 0.162696197031
+44: 0.162288487075
+51: 0.132307697642
+130: 0.116896094139
+33: 0.058600798907
+6: 0.0496539802907
+137: 0.0458283887538
+107: 0.0122078063098
+50: 0.00850111253016
+134: 0.0045134993991
+138: 0.0
+136: 0.0
+135: 0.0
+132: 0.0
+131: 0.0
+129: 0.0
+128: 0.0
+127: 0.0
+126: 0.0
+125: 0.0
+124: 0.0
+123: 0.0
+121: 0.0
+120: 0.0
+119: 0.0
+118: 0.0
+117: 0.0
+116: 0.0
+115: 0.0
+114: 0.0
+113: 0.0
+112: 0.0
+111: 0.0
+108: 0.0
+106: 0.0
+105: 0.0
+104: 0.0
+102: 0.0
+100: 0.0
+99: 0.0
+98: 0.0
+97: 0.0
+96: 0.0
+94: 0.0
+93: 0.0
+92: 0.0
+91: 0.0
+90: 0.0
+89: 0.0
+88: 0.0
+87: 0.0
+86: 0.0
+85: 0.0
+84: 0.0
+83: 0.0
+82: 0.0
+81: 0.0
+80: 0.0
+79: 0.0
+78: 0.0
+77: 0.0
+76: 0.0
+75: 0.0
+74: 0.0
+73: 0.0
+72: 0.0
+71: 0.0
+70: 0.0
+68: 0.0
+67: 0.0
+66: 0.0
+65: 0.0
+64: 0.0
+63: 0.0
+62: 0.0
+61: 0.0
+60: 0.0
+59: 0.0
+58: 0.0
+57: 0.0
+56: 0.0
+55: 0.0
+54: 0.0
+53: 0.0
+52: 0.0
+49: 0.0
+48: 0.0
+47: 0.0
+46: 0.0
+45: 0.0
+43: 0.0
+42: 0.0
+41: 0.0
+40: 0.0
+39: 0.0
+38: 0.0
+37: 0.0
+36: 0.0
+35: 0.0
+34: 0.0
+32: 0.0
+31: 0.0
+30: 0.0
+28: 0.0
+26: 0.0
+24: 0.0
+23: 0.0
+22: 0.0
+21: 0.0
+20: 0.0
+19: 0.0
+18: 0.0
+17: 0.0
+16: 0.0
+15: 0.0
+14: 0.0
+13: 0.0
+12: 0.0
+11: 0.0
+10: 0.0
+9: 0.0
+8: 0.0
+7: 0.0
+5: 0.0
+4: 0.0
+3: 0.0
+2: 0.0
+1: 0.0
+122: -0.076762294931
+103: -0.400135360974
+25: -0.541942145398
+95: -1.1792713227
+101: -1.61432725745
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+Naive Bayes:
+	Training accuracy: 83.2189168574
+	Testing accuracy: 81.1387900356
+	Precision: 80.4347826087
+	Recall: 58.4210526316
+	True Negative: 92.7419354839
+{'FP': 27, 'TN': 345, 'FN': 79, 'TP': 111}
+
+
+Support Vector Classification:
+	Training accuracy: 84.7444698703
+	Testing accuracy: 81.1387900356
+	Precision: 76.0869565217
+	Recall: 58.9887640449
+	True Negative: 91.40625
+{'FP': 33, 'TN': 351, 'FN': 73, 'TP': 105}
+Nearest Neighbors:
+{'n_neighbors': 20, 'algorithm': 'auto'}
+	Training accuracy: 85.4309687262
+	Testing accuracy: 81.1387900356
+	Precision: 50.0
+	Recall: 65.0943396226
+	True Negative: 84.8684210526
+{'FP': 69, 'TN': 387, 'FN': 37, 'TP': 69}
+
+
+Decision Tree Classifier:
+	Training accuracy: 97.5591151793
+	Testing accuracy: 77.5800711744
+	Precision: 44.9275362319
+	Recall: 55.3571428571
+	True Negative: 83.1111111111
+{'FP': 76, 'TN': 374, 'FN': 50, 'TP': 62}
+
+
+Ridge Classifier:
+	Training accuracy: 86.2700228833
+	Testing accuracy: 83.2740213523
+	Precision: 62.3188405797
+	Recall: 67.1875
+	True Negative: 88.0184331797
+{'FP': 52, 'TN': 382, 'FN': 42, 'TP': 86}
+
+
+log regress Classifier:
+	Training accuracy: 86.1937452326
+	Testing accuracy: 83.2740213523
+	Precision: 60.8695652174
+	Recall: 67.7419354839
+	True Negative: 87.6712328767
+{'FP': 54, 'TN': 384, 'FN': 40, 'TP': 84}
+
+
+adaboost classifier:
+	Training accuracy: 85.8886346301
+	Testing accuracy: 82.384341637
+	Precision: 57.9710144928
+	Recall: 66.1157024793
+	True Negative: 86.8480725624
+{'FP': 58, 'TN': 383, 'FN': 41, 'TP': 80}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  20 2
+First sample (input, target, class):
+0.122666716164
+0.0811168053787
+0.0748947212299
+0.0705298574345
+0.0681986575945
+0.0656616424287
+0.0639152662085
+0.0625978931909
+0.0613536226554
+0.0601025284759
+0.0595140795419
+0.0585789086599
+0.0579167145039
+0.0575011253746
+0.0569757806591
+0.0565766042975
+0.0559956153254
+0.0559186294386
+0.05522924925
+0.0550047245321
+0.0550459183972
+0.0546137811988
+0.0545455758745
+0.0541802881684
+0.0539622660131
+epoch:   25   train error: 14.57%   test error: 18.33%
+
+top chi-squared
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+[  3.70639673e+00   2.47051473e-01   2.99246362e-01   7.99780712e+00
+   1.50390775e+00   1.73859506e+00   9.29420637e-01   6.56741357e-01
+   3.44083622e+00   1.11804112e-03   6.24624625e-01   3.18347193e-03
+   7.32086982e-02   6.64125664e-02   2.81081081e+00   6.00223591e-01
+   3.94765138e+00   4.47216447e-03   4.25883709e+00   2.10718230e+01
+   8.79285879e-02   5.37941788e-02   1.23876592e+00   3.22646629e+00
+   1.14933510e+02   2.80408705e+00   1.05934537e+02   1.32147219e+01
+   1.64086471e+02   1.46928747e+00   1.09968322e+01   1.20312620e+00
+   6.58692178e+00   8.57227420e-02   1.25412165e-01   9.66865136e-01
+   4.11038002e+00   6.64747711e-01   9.86627653e-02   2.10880523e-02
+   8.89607048e-01   4.30169264e+00   9.17382715e+00   3.34217022e+01
+   2.84466547e+00   1.10628929e+01   4.90351113e+00   1.54048293e+00
+   5.07498623e-01   4.39424105e+00   3.86497659e+00   9.05941343e-01
+   3.57652524e-01   6.70423468e+00   1.10461921e-02   5.59369602e-01
+   6.71537599e-03   5.59020559e-04   1.51022242e+00   8.75676088e+00
+   6.24624625e-01   1.44740125e+00   2.15502003e+00   3.49309474e-01
+   1.01050389e+00   1.39960597e-01   4.04986205e+00   3.78119133e+00
+   2.97305691e+01   3.78558847e+00   6.52945614e-02   7.32086982e-02
+   2.83301983e-01   4.24586156e+00   1.84539892e+00   1.23876592e+00
+   1.06329513e+00   7.37399931e-03   2.05959014e-01   5.51547263e+00
+   4.05076118e+00   9.00774480e+00   2.59525078e+01   3.16350010e+01
+   3.11720846e+01   5.33176667e-02   1.95251819e-01   7.25435983e+00
+   6.93905204e+00   1.70554882e-01   2.80823377e+00   3.06312009e+00
+   2.96989966e-04   5.03596613e+00   7.22345082e+00   1.24432962e-01
+   3.57816340e-02   1.24318037e+00   1.15908504e+00   1.64162740e+00
+   1.03530565e+02   5.08674431e+00   1.05825717e+02   3.79679621e+00
+   8.33947409e+00   2.61734826e+00   3.17951028e-01   8.71269924e+00
+   6.04749775e-01   2.00099650e-01   9.00878505e-01   4.46004317e+00
+   6.14775556e+00   1.68297361e+01   1.37500138e-06   1.94817125e-01
+   3.58606325e-01   8.15383714e-02   4.38613393e+00   1.18851762e-01
+   2.16793030e+00   1.72320686e+01   9.68978334e-01   3.41373557e-01
+   3.73570686e+00   1.05440262e-02   1.37500138e-06   7.92938459e-01
+   1.61922277e-04   3.52391283e+01   3.37192173e-01   2.02497662e-02
+   1.60003896e+00   5.40693673e-02   9.59616233e-02   1.06642002e-01
+   2.79317184e+00   8.67282117e-01]
+[False False False False False False False False False False False False
+ False False False False False False False  True False False False False
+  True False  True  True  True False  True False False False False False
+ False False False False False False  True  True False  True False False
+ False False False False False False False False False False False  True
+ False False False False False False False False  True False False False
+ False False False False False False False False False  True  True  True
+  True False False False False False False False False False False False
+ False False False False  True False  True False False False False False
+ False False False False False  True False False False False False False
+ False  True False False False False False False False  True False False
+ False False False False False False]
+164.086470732
+28
+<type 'numpy.ndarray'>
+29: 164.086470732
+25: 114.933509779
+27: 105.934537422
+103: 105.825716992
+101: 103.530564874
+130: 35.2391282648
+44: 33.4217022452
+84: 31.6350009723
+85: 31.1720845782
+69: 29.7305691201
+83: 25.9525077977
+20: 21.0718230249
+122: 17.2320686071
+114: 16.8297360751
+28: 13.2147219335
+46: 11.0628929066
+31: 10.9968322395
+43: 9.17382714883
+82: 9.00774479815
+60: 8.75676088176
+108: 8.7126992377
+105: 8.33947408947
+4: 7.99780712
+88: 7.25435983316
+95: 7.22345082003
+89: 6.93905204454
+54: 6.7042346834
+33: 6.58692177755
+113: 6.14775555621
+80: 5.51547263411
+102: 5.08674430988
+94: 5.03596612887
+47: 4.90351113393
+112: 4.46004316972
+50: 4.39424104678
+119: 4.38613392712
+42: 4.30169263714
+19: 4.25883708611
+74: 4.24586156476
+37: 4.11038001995
+81: 4.05076118147
+67: 4.04986204986
+17: 3.94765137734
+51: 3.86497658694
+104: 3.79679621482
+70: 3.78558847309
+68: 3.78119132661
+125: 3.73570686071
+1: 3.70639672603
+9: 3.44083622084
+24: 3.22646628529
+92: 3.06312009193
+45: 2.84466546967
+15: 2.81081081081
+91: 2.80823377407
+26: 2.80408705409
+137: 2.79317184317
+106: 2.61734826467
+121: 2.16793030131
+63: 2.15502003483
+75: 1.84539892323
+6: 1.73859505521
+100: 1.64162740349
+133: 1.60003895845
+48: 1.54048293203
+59: 1.51022241647
+5: 1.50390775391
+30: 1.46928746929
+62: 1.4474012474
+98: 1.24318036755
+76: 1.23876591524
+23: 1.23876591524
+32: 1.20312620313
+99: 1.15908503703
+77: 1.06329513315
+65: 1.01050388948
+123: 0.968978333843
+36: 0.966865136413
+7: 0.929420637353
+52: 0.905941343441
+111: 0.900878505147
+41: 0.889607048023
+138: 0.867282117282
+128: 0.792938459307
+38: 0.664747711222
+8: 0.656741356741
+61: 0.624624624625
+11: 0.624624624625
+109: 0.604749774785
+16: 0.60022359079
+56: 0.559369601822
+49: 0.507498622883
+117: 0.358606324708
+53: 0.357652524319
+64: 0.349309474309
+124: 0.34137355709
+131: 0.337192173258
+107: 0.317951027951
+3: 0.299246361746
+73: 0.283301983302
+2: 0.247051472567
+79: 0.205959013555
+110: 0.200099649568
+87: 0.19525181919
+116: 0.194817124817
+90: 0.170554882266
+66: 0.139960596691
+35: 0.125412165387
+96: 0.124432962453
+120: 0.118851762008
+136: 0.106642001803
+39: 0.0986627653294
+135: 0.0959616233391
+21: 0.0879285879286
+34: 0.0857227419727
+118: 0.081538371432
+72: 0.0732086982087
+13: 0.0732086982087
+14: 0.0664125664126
+71: 0.0652945613883
+134: 0.0540693673276
+22: 0.0537941787942
+86: 0.0533176666693
+97: 0.035781633976
+40: 0.0210880523381
+132: 0.0202497661781
+55: 0.0110461920807
+126: 0.010544026169
+78: 0.00737399930948
+57: 0.00671537599355
+18: 0.00447216447216
+12: 0.00318347193347
+10: 0.00111804111804
+58: 0.000559020559021
+93: 0.0002969899658
+129: 0.000161922277307
+127: 1.375001375e-06
+115: 1.375001375e-06
+Naive Bayes:
+	Training accuracy: 80.701754386
+	Testing accuracy: 79.1814946619
+	Precision: 77.5362318841
+	Recall: 55.4404145078
+	True Negative: 91.5989159892
+{'FP': 31, 'TN': 338, 'FN': 86, 'TP': 107}
+
+
+Support Vector Classification:
+	Training accuracy: 85.5072463768
+	Testing accuracy: 81.3167259786
+	Precision: 60.1449275362
+	Recall: 62.4060150376
+	True Negative: 87.1794871795
+{'FP': 55, 'TN': 374, 'FN': 50, 'TP': 83}
+Nearest Neighbors:
+{'n_neighbors': 20, 'algorithm': 'auto'}
+	Training accuracy: 84.8970251716
+	Testing accuracy: 81.8505338078
+	Precision: 52.1739130435
+	Recall: 66.6666666667
+	True Negative: 85.4625550661
+{'FP': 66, 'TN': 388, 'FN': 36, 'TP': 72}
+
+
+Decision Tree Classifier:
+	Training accuracy: 99.0083905416
+	Testing accuracy: 77.4021352313
+	Precision: 55.7971014493
+	Recall: 53.8461538462
+	True Negative: 85.4415274463
+{'FP': 61, 'TN': 358, 'FN': 66, 'TP': 77}
+
+
+Ridge Classifier:
+	Training accuracy: 85.2021357742
+	Testing accuracy: 82.206405694
+	Precision: 57.9710144928
+	Recall: 65.5737704918
+	True Negative: 86.8181818182
+{'FP': 58, 'TN': 382, 'FN': 42, 'TP': 80}
+
+
+log regress Classifier:
+	Training accuracy: 84.591914569
+	Testing accuracy: 82.206405694
+	Precision: 57.2463768116
+	Recall: 65.8333333333
+	True Negative: 86.6515837104
+{'FP': 59, 'TN': 383, 'FN': 41, 'TP': 79}
+
+
+adaboost classifier:
+	Training accuracy: 85.0495804729
+	Testing accuracy: 81.1387900356
+	Precision: 54.347826087
+	Recall: 63.5593220339
+	True Negative: 85.8108108108
+{'FP': 63, 'TN': 381, 'FN': 43, 'TP': 75}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  20 2
+First sample (input, target, class):
+0.0844015038195
+0.0671309275233
+0.0644947302646
+0.063936914158
+0.0628283654129
+0.0619167244403
+0.0611843570851
+0.0607779485049
+0.0600275449183
+0.059940147111
+0.0597088346081
+0.0592920252151
+0.0587302918547
+0.0594009389804
+0.0589203129848
+0.0592758581676
+0.0591034582248
+0.0597201778103
+0.05959651499
+0.0602839029182
+0.0601852462068
+0.0608548705083
+0.0609059666475
+0.0614258273512
+0.0614662048973
+epoch:   25   train error: 15.87%   test error: 18.68%
+
+
+
+
+manual
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+[26, 29, 80, 83, 96, 106, 111, 112, 118, 129]
+1311
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+<type 'numpy.ndarray'>
+(1311, 11)
+(562, 11)
+[[ 0.          1.          0.1        ...,  1.          1.          0.        ]
+ [ 0.          1.          0.21518987 ...,  1.          0.          0.        ]
+ [ 0.          0.          0.21518987 ...,  1.          1.          0.        ]
+ ..., 
+ [ 0.          0.          0.17594937 ...,  0.          0.          0.        ]
+ [ 0.          1.          0.45443038 ...,  0.          0.          0.        ]
+ [ 0.          0.          0.12531646 ...,  0.          0.          0.        ]]
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+Naive Bayes:
+	Training accuracy: 77.1167048055
+	Testing accuracy: 77.2241992883
+	Precision: 39.8550724638
+	Recall: 55.0
+	True Negative: 82.0346320346
+{'FP': 83, 'TN': 379, 'FN': 45, 'TP': 55}
+
+
+Support Vector Classification:
+	Training accuracy: 70.3279938978
+	Testing accuracy: 70.1067615658
+	Precision: 84.7826086957
+	Recall: 44.3181818182
+	True Negative: 92.9530201342
+{'FP': 21, 'TN': 277, 'FN': 147, 'TP': 117}
+Nearest Neighbors:
+{'n_neighbors': 12, 'algorithm': 'auto'}
+	Training accuracy: 81.6170861937
+	Testing accuracy: 79.1814946619
+	Precision: 44.9275362319
+	Recall: 60.1941747573
+	True Negative: 83.4422657952
+{'FP': 76, 'TN': 383, 'FN': 41, 'TP': 62}
+
+
+Decision Tree Classifier:
+	Training accuracy: 99.1609458429
+	Testing accuracy: 73.665480427
+	Precision: 54.347826087
+	Recall: 46.875
+	True Negative: 84.328358209
+{'FP': 63, 'TN': 339, 'FN': 85, 'TP': 75}
+
+
+Ridge Classifier:
+	Training accuracy: 79.4050343249
+	Testing accuracy: 77.5800711744
+	Precision: 22.4637681159
+	Recall: 62.0
+	True Negative: 79.1015625
+{'FP': 107, 'TN': 405, 'FN': 19, 'TP': 31}
+
+
+log regress Classifier:
+	Training accuracy: 79.7864225782
+	Testing accuracy: 79.1814946619
+	Precision: 30.4347826087
+	Recall: 66.6666666667
+	True Negative: 80.7615230461
+{'FP': 96, 'TN': 403, 'FN': 21, 'TP': 42}
+
+
+adaboost classifier:
+	Training accuracy: 83.1426392067
+	Testing accuracy: 82.9181494662
+	Precision: 56.5217391304
+	Recall: 68.4210526316
+	True Negative: 86.6071428571
+{'FP': 60, 'TN': 388, 'FN': 36, 'TP': 78}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  11 2
+First sample (input, target, class):
+0.0934848545226
+0.0816026101561
+0.0789555192156
+0.0784019970051
+0.0782046065539
+0.0774002749853
+0.0771405721164
+0.0773375118269
+0.0767462593705
+0.0769491366192
+0.0764809785291
+0.0767584944699
+0.076112136448
+0.0760545852681
+0.0761409891117
+0.0759482204112
+0.0762600554547
+0.0757954816757
+0.0752542419185
+0.0756329572157
+0.0755788379927
+0.0753872403278
+0.0754651905249
+0.0753851811467
+0.0751422851065
+epoch:   25   train error: 21.05%   test error: 22.42%
+
+
+cfs
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+Naive Bayes:
+	Training accuracy: 82.9900839054
+	Testing accuracy: 82.384341637
+	Precision: 81.884057971
+	Recall: 60.4278074866
+	True Negative: 93.3333333333
+{'FP': 25, 'TN': 350, 'FN': 74, 'TP': 113}
+
+
+Support Vector Classification:
+	Training accuracy: 85.5072463768
+	Testing accuracy: 81.6725978648
+	Precision: 76.8115942029
+	Recall: 59.8870056497
+	True Negative: 91.6883116883
+{'FP': 32, 'TN': 353, 'FN': 71, 'TP': 106}
+Nearest Neighbors:
+{'n_neighbors': 20, 'algorithm': 'ball_tree'}
+	Training accuracy: 86.8039664378
+	Testing accuracy: 83.2740213523
+	Precision: 59.4202898551
+	Recall: 68.3333333333
+	True Negative: 87.3303167421
+{'FP': 56, 'TN': 386, 'FN': 38, 'TP': 82}
+
+
+Decision Tree Classifier:
+	Training accuracy: 97.177726926
+	Testing accuracy: 79.359430605
+	Precision: 63.0434782609
+	Recall: 57.2368421053
+	True Negative: 87.5609756098
+{'FP': 51, 'TN': 359, 'FN': 65, 'TP': 87}
+
+
+Ridge Classifier:
+	Training accuracy: 86.3463005339
+	Testing accuracy: 82.9181494662
+	Precision: 61.5942028986
+	Recall: 66.40625
+	True Negative: 87.7880184332
+{'FP': 53, 'TN': 381, 'FN': 43, 'TP': 85}
+
+
+log regress Classifier:
+	Training accuracy: 86.117467582
+	Testing accuracy: 83.0960854093
+	Precision: 60.8695652174
+	Recall: 67.2
+	True Negative: 87.643020595
+{'FP': 54, 'TN': 383, 'FN': 41, 'TP': 84}
+
+
+adaboost classifier:
+	Training accuracy: 87.3379099924
+	Testing accuracy: 82.0284697509
+	Precision: 60.1449275362
+	Recall: 64.3410852713
+	True Negative: 87.2979214781
+{'FP': 55, 'TN': 378, 'FN': 46, 'TP': 83}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  11 2
+First sample (input, target, class):
+0.0824492071123
+0.0636805032615
+0.0609406966532
+0.0593645200866
+0.0584882925177
+0.0582243568128
+0.0577346352448
+0.0572742793801
+0.0570000383672
+0.0562975617342
+0.0562227159691
+0.0557941181615
+0.055408731023
+0.0552530069804
+0.0545595257556
+0.0546102483486
+0.0545732151942
+0.0541159909331
+0.0543630863091
+0.0540699197105
+0.0538462183154
+0.0536564055142
+0.0536971604761
+0.0531766315798
+0.0534411929667
+epoch:   25   train error: 14.19%   test error: 17.08%
+[Finished in 48.6s]
+
+
+
+
+fisher
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+Naive Bayes:
+	Training accuracy: 80.472921434
+	Testing accuracy: 81.4946619217
+	Precision: 86.9565217391
+	Recall: 58.2524271845
+	True Negative: 94.9438202247
+{'FP': 18, 'TN': 338, 'FN': 86, 'TP': 120}
+
+
+Support Vector Classification:
+	Training accuracy: 85.2021357742
+	Testing accuracy: 82.7402135231
+	Precision: 77.5362318841
+	Recall: 61.8497109827
+	True Negative: 92.030848329
+{'FP': 31, 'TN': 358, 'FN': 66, 'TP': 107}
+Nearest Neighbors:
+{'n_neighbors': 20, 'algorithm': 'auto'}
+	Training accuracy: 85.3546910755
+	Testing accuracy: 82.0284697509
+	Precision: 53.6231884058
+	Recall: 66.6666666667
+	True Negative: 85.8093126386
+{'FP': 64, 'TN': 387, 'FN': 37, 'TP': 74}
+
+
+Decision Tree Classifier:
+	Training accuracy: 100.0
+	Testing accuracy: 77.7580071174
+	Precision: 58.6956521739
+	Recall: 54.3624161074
+	True Negative: 86.1985472155
+{'FP': 57, 'TN': 356, 'FN': 68, 'TP': 81}
+
+
+Ridge Classifier:
+	Training accuracy: 85.8886346301
+	Testing accuracy: 82.5622775801
+	Precision: 60.8695652174
+	Recall: 65.625
+	True Negative: 87.5576036866
+{'FP': 54, 'TN': 380, 'FN': 44, 'TP': 84}
+
+
+log regress Classifier:
+	Training accuracy: 85.8123569794
+	Testing accuracy: 82.9181494662
+	Precision: 61.5942028986
+	Recall: 66.40625
+	True Negative: 87.7880184332
+{'FP': 53, 'TN': 381, 'FN': 43, 'TP': 85}
+
+
+adaboost classifier:
+	Training accuracy: 87.1853546911
+	Testing accuracy: 82.0284697509
+	Precision: 60.8695652174
+	Recall: 64.1221374046
+	True Negative: 87.4709976798
+{'FP': 54, 'TN': 377, 'FN': 47, 'TP': 84}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  20 2
+First sample (input, target, class):
+0.082520007794
+0.0680028741348
+0.0644394344153
+0.0626868162869
+0.062910227057
+0.0622974692491
+0.0627478298019
+0.0634090326492
+0.0632940045888
+0.0639197280914
+0.0642222271046
+0.0648670220008
+0.0646212175264
+0.0644161231151
+0.0641398630701
+0.0637965085838
+0.0639388473155
+0.0641915759738
+0.065206169864
+0.065505884136
+0.0663489769168
+0.0674700068172
+0.0688350620374
+0.0703694911198
+0.0717540469946
+epoch:   25   train error: 18.31%   test error: 20.46%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+all
+[-1. -1.  1. ..., -1. -1. -1.]
+[[ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ [ 0.  0.  1. ...,  1.  1.  1.]
+ ..., 
+ [ 1.  0.  0. ...,  1.  1.  0.]
+ [ 0.  1.  0. ...,  1.  1.  0.]
+ [ 1.  0.  0. ...,  1.  0.  0.]]
+training set size 1311testing_set_size562
+(1873, 138)
+/Library/Python/2.7/site-packages/numpy-1.9.1-py2.7-macosx-10.9-intel.egg/numpy/core/fromnumeric.py:2499: VisibleDeprecationWarning: `rank` is deprecated; use the `ndim` attribute or function instead. To find the rank of a matrix see `numpy.linalg.matrix_rank`.
+  VisibleDeprecationWarning)
+Naive Bayes:
+	Training accuracy: 51.6399694889
+	Testing accuracy: 51.7793594306
+	Precision: 96.3768115942
+	Recall: 33.3333333333
+	True Negative: 96.9325153374
+{'FP': 5, 'TN': 158, 'FN': 266, 'TP': 133}
+
+
+Support Vector Classification:
+	Training accuracy: 87.0327993898
+	Testing accuracy: 81.6725978648
+	Precision: 84.0579710145
+	Recall: 58.883248731
+	True Negative: 93.9726027397
+{'FP': 22, 'TN': 343, 'FN': 81, 'TP': 116}
+Nearest Neighbors:
+{'n_neighbors': 12, 'algorithm': 'auto'}
+	Training accuracy: 82.4561403509
+	Testing accuracy: 80.2491103203
+	Precision: 32.6086956522
+	Recall: 71.4285714286
+	True Negative: 81.3627254509
+{'FP': 93, 'TN': 406, 'FN': 18, 'TP': 45}
+
+
+Decision Tree Classifier:
+	Training accuracy: 100.0
+	Testing accuracy: 77.5800711744
+	Precision: 60.8695652174
+	Recall: 53.8461538462
+	True Negative: 86.6995073892
+{'FP': 54, 'TN': 352, 'FN': 72, 'TP': 84}
+
+
+Ridge Classifier:
+	Training accuracy: 87.1853546911
+	Testing accuracy: 84.1637010676
+	Precision: 62.3188405797
+	Recall: 69.918699187
+	True Negative: 88.1548974943
+{'FP': 52, 'TN': 387, 'FN': 37, 'TP': 86}
+
+
+log regress Classifier:
+	Training accuracy: 88.4057971014
+	Testing accuracy: 82.7402135231
+	Precision: 61.5942028986
+	Recall: 65.8914728682
+	True Negative: 87.7598152425
+{'FP': 53, 'TN': 380, 'FN': 44, 'TP': 85}
+
+
+adaboost classifier:
+	Training accuracy: 87.1853546911
+	Testing accuracy: 82.0284697509
+	Precision: 59.4202898551
+	Recall: 64.5669291339
+	True Negative: 87.1264367816
+{'FP': 56, 'TN': 379, 'FN': 45, 'TP': 82}
+
+
+train size: 1311
+test size: 562
+Number of training patterns:  1311
+Input and output dimensions:  138 2
+First sample (input, target, class):
+0.132341288166
+0.0902196212973
+0.0891548342268
+0.0898337436824
+0.0873486137081
+0.0831560775321
+0.0768729214567
+0.0724844342792
+0.0705552252677
+0.0674252102158
+0.0655756237417
+0.0644861950722
+0.0628218535903
+0.0616811665278
+0.0608710248145
+0.0598944733348
+0.0590573129185
+0.0585195820909
+0.0584560560783
+0.0576447322856
+0.0573331439102
+0.0567588000634
+0.0565694082908
+0.0563325927762
+0.0565066575833
+epoch:   25   train error: 16.02%   test error: 19.57%

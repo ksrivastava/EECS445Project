@@ -49,7 +49,7 @@ field = ['feature_selection_algorithm', 'classifier']
 
 ######################### Add more number if you want to have more range of top features listed  ######################
 
-top_features_list = [1, 3, 5, 8, 10]
+top_features_list = [1, 3, 5, 8, 10, 20]
 
 ##########################################################################
 
